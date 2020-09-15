@@ -17,6 +17,17 @@ $(document).ready(function(){
 			method: "POST",
 			processData: false,
 			contentType: false,
+			statusCode: {
+				200: function(e) {
+					document.cookie = "username=" + e.email;
+					document.cookie = "profile=" + e.profile;  
+					console.log("success!", e);
+					window.location.href = '/menu';
+				},
+				401: function() {
+					$(".alert").show();
+				}
+			}
 		}).done(function(e){
 			console.log(e);
 		});

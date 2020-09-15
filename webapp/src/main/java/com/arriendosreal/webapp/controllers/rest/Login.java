@@ -1,4 +1,4 @@
-package com.arriendosreal.webapp.controllers;
+package com.arriendosreal.webapp.controllers.rest;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
