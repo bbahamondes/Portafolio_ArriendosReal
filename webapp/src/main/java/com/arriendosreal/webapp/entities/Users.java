@@ -1,17 +1,23 @@
 package com.arriendosreal.webapp.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Users {
 	
+	@Id
 	private String email;
-	private String profile;
 	private String password;
+	private String profile;
 	
+	protected Users() {}
+	
+	public Users(String email, String profile, String password) {
+		this.email = email;
+		this.password = password;
+		this.profile = profile;
+	}
 	
 	public String getEmail() {
 		return email;
