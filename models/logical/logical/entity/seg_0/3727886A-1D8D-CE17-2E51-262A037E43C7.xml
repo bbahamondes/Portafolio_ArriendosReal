@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="3727886A-1D8D-CE17-2E51-262A037E43C7" name="Resumen">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:56:14 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_resumen" id="6BA07230-7C01-4119-3CF2-257045952086">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:56:54 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ingreso" id="4CE39016-6E2A-79F7-A0D6-CD955BFE3F35">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:02:43 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="egreso" id="3290728E-84DF-F434-64FA-A008CF09CB69">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:02:53 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha" id="AC5B0714-62B4-68E4-1CDB-BFD0BE05E6A8">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:03:02 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DACB9722-3734-0D23-A295-F1B2A736E89A" name="Resumen PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:57:08 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6BA07230-7C01-4119-3CF2-257045952086</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

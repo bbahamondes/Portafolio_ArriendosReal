@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="45583EFA-DAFA-153D-3F08-69774B85B039" name="Servicios">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:07:41 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_servicio" id="E2CAFC58-4326-3723-6F76-9A9495230DAB">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:07:41 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_departmento" id="113A150D-F11F-5C95-B974-A6AB6C7292D2">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:37:07 UTC</createdTime>
+<generatorID>AD615D41-E354-2AE6-B841-5CA2C482DF69</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>808E8EFA-104A-0CCE-8BAC-B9CD747AC9F6</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="EBC12261-74DF-B128-9F37-37BC89EEF009">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 21:11:29 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="costo_operacion" id="CCE64C33-08E8-EA6F-8CE9-B033C959096A">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 21:14:17 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valor_cliente" id="53BB2856-8FF8-2B5F-BAC8-E1D7D30397E1">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 21:14:42 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_tipo" id="072D71A9-D855-23F4-31CF-906429114C8D">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:04:17 UTC</createdTime>
+<generatorID>C95CB8E3-6C7A-00F9-F29C-6496DB3C95BC</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>0D5C759B-AF05-9716-05A6-2C8FFC5A73DE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7935842E-490C-032C-0E2D-71E74082C794" name="Inventory PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:07:41 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E2CAFC58-4326-3723-6F76-9A9495230DAB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

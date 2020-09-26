@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0EE17291-1292-0165-C990-DBDF0BE85F4F" name="Estadias">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>D75D30C9-E9AA-FDA6-AB5A-A91F5AF367CE</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_estadia" id="5643A161-C93F-BD87-C470-835A6C0AE6DD">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>19265326-D72D-3B32-3FAD-7FC156A9DF94</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CheckIn_id_checkin" id="ED9FB4D1-0337-BFF5-9893-3A5C7B15F699">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>DBECD321-B247-2E26-870D-6C843E95EA3B</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8299FB28-DF64-E9C8-5D9D-507D498719BB" referredColumn="C398E30C-0C21-133F-409F-E96DDD89FEFE"/>
+</associations>
+</Column>
+<Column name="CheckOut_id_checkout" id="C80EF6A8-8826-FF74-710C-0155FEF1E42A">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>6435AE94-92CB-D08F-0058-DD718EFAE1F5</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A185A438-FAAA-8049-0C4A-CE0B4A100BD7" referredColumn="EA5BC2DC-7655-5DA8-37DD-2A6A6D0E4753"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="28549538-5C78-AA50-7548-34384EB413D7" name="Estadias_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>A4B775F3-F381-BF9B-63F6-AE0F64610B64</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5643A161-C93F-BD87-C470-835A6C0AE6DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AC0DA5B9-8197-78F5-FC71-1D4B4E1CB5F0" name="Estadias__IDX">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>545201BE-1FD0-15E4-B494-FEB06A4ECD5F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="ED9FB4D1-0337-BFF5-9893-3A5C7B15F699"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4E5A88C4-C4DA-EB10-04C0-A251AE8AC0DF" name="Estadias__IDXv1">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>20709C08-070A-A8FC-ECA7-10EE18ABF6A3</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C80EF6A8-8826-FF74-710C-0155FEF1E42A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="29CC6B36-0246-507C-A829-88994BFF30D2" name="Estadias_CheckIn_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>545201BE-1FD0-15E4-B494-FEB06A4ECD5F</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED9FB4D1-0337-BFF5-9893-3A5C7B15F699"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8231E33E-4B26-15F0-D195-9E3924DEB557" name="Estadias_CheckOut_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:13:35 UTC</createdTime>
+<generatorID>20709C08-070A-A8FC-ECA7-10EE18ABF6A3</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C80EF6A8-8826-FF74-710C-0155FEF1E42A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

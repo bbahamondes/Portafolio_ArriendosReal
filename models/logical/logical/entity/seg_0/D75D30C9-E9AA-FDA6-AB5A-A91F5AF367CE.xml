@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D75D30C9-E9AA-FDA6-AB5A-A91F5AF367CE" name="Estadias">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:31:21 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_estadia" id="19265326-D72D-3B32-3FAD-7FC156A9DF94">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:31:30 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_checkin" id="DBECD321-B247-2E26-870D-6C843E95EA3B">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:12:16 UTC</createdTime>
+<generatorID>545201BE-1FD0-15E4-B494-FEB06A4ECD5F</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>34BAF6C4-03FD-4DCA-071B-55AEC43F6C66</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_checkout" id="6435AE94-92CB-D08F-0058-DD718EFAE1F5">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:12:25 UTC</createdTime>
+<generatorID>20709C08-070A-A8FC-ECA7-10EE18ABF6A3</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>71A890F6-B717-C746-2604-ECC4358EB35B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A4B775F3-F381-BF9B-63F6-AE0F64610B64" name="Estadia PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:31:40 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>19265326-D72D-3B32-3FAD-7FC156A9DF94</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

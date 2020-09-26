@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1B90C997-91AE-C5AD-25A0-7096FAE87C0D" name="Reservas">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:06:01 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_reserva" id="815D6156-5BBD-3043-3C5B-3EEE30432AB6">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:06:01 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_entrada" id="1DBAD7FB-CF16-FFDE-3F3E-30F6E1E4A464">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 21:56:56 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_salida" id="B580AF73-BA56-C242-1C61-F247537EC335">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 21:57:04 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_departmento" id="16604B34-8691-6975-F138-18EAF86970FB">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:04:43 UTC</createdTime>
+<generatorID>C232713F-0EB1-CFC0-1C2D-A06E471AC094</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>808E8EFA-104A-0CCE-8BAC-B9CD747AC9F6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_persona" id="54519422-0EC7-437E-4A3F-EC2E5C694C00">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:05:01 UTC</createdTime>
+<generatorID>C930CEF5-1BF2-94B8-CF0C-5173103798E1</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>CBA1A861-504D-E94B-4245-171CAF39D039</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_estadia" id="A894312F-12C2-2D5D-9998-1E7B5CE61FD6">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:12:55 UTC</createdTime>
+<generatorID>06AB7797-EE8F-B20A-7274-17A54AA6B668</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<referedAttribute>19265326-D72D-3B32-3FAD-7FC156A9DF94</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="32826093-2938-5D4B-1525-065E1A5313C7" name="Inventory PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 20:06:01 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>815D6156-5BBD-3043-3C5B-3EEE30432AB6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
