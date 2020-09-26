@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="91091B3C-58D6-FABC-D41B-915A103498FC" name="Servicios">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>45583EFA-DAFA-153D-3F08-69774B85B039</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_servicio" id="820BE4C6-467A-B84C-82AE-A04471C12082">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>E2CAFC58-4326-3723-6F76-9A9495230DAB</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Departmentos_id_departmento" id="9B35DC2C-F02E-82D4-3A4A-BAD07E2FE859">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>113A150D-F11F-5C95-B974-A6AB6C7292D2</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73BFFBE0-20BF-6C04-358F-E62A7992A21E" referredColumn="C69D437D-1CFA-EE32-08C6-8C5D5384BF61"/>
+</associations>
+</Column>
+<Column name="descripcion" id="8634B48F-8C34-4D28-91D0-ED149BCA8E01">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>EBC12261-74DF-B128-9F37-37BC89EEF009</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="costo_operacion" id="4A654833-8E75-E0D1-AB5D-BE08A756376E">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>CCE64C33-08E8-EA6F-8CE9-B033C959096A</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="valor_cliente" id="45900965-58B7-C538-B14A-3000204E1C33">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>53BB2856-8FF8-2B5F-BAC8-E1D7D30397E1</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tipos_servicio_id_tipo" id="131C0050-CA47-1E1C-40DD-E9982BCFCD1F">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>072D71A9-D855-23F4-31CF-906429114C8D</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F3091AB7-3C4C-1967-9BB8-6B9E8CFFDCB1" referredColumn="6AF95D31-1EE6-46E0-F16C-DB377577C830"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="64613BD3-3255-B412-CDEC-6E9EFECFECFF" name="Servicios_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>7935842E-490C-032C-0E2D-71E74082C794</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="820BE4C6-467A-B84C-82AE-A04471C12082"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31B14D47-8ACA-2C96-57E9-02DF388CDDA2" name="Servicios__IDX">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>C95CB8E3-6C7A-00F9-F29C-6496DB3C95BC</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="131C0050-CA47-1E1C-40DD-E9982BCFCD1F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A1947551-1154-747D-A6C8-987DA1EE2E4C" name="Servicios_Tipos_servicio_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>C95CB8E3-6C7A-00F9-F29C-6496DB3C95BC</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="131C0050-CA47-1E1C-40DD-E9982BCFCD1F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A7C4B6E6-D183-EBDB-2909-967218564F9C" name="Servicios_Departmentos_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:42:14 UTC</createdTime>
+<generatorID>AD615D41-E354-2AE6-B841-5CA2C482DF69</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9B35DC2C-F02E-82D4-3A4A-BAD07E2FE859"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

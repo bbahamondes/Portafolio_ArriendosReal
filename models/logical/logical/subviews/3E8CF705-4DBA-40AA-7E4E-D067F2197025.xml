@@ -60,7 +60,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="C6F4981D-6AC2-AD4C-52A4-33FA58D9DCCD" otype="Entity" vid="95D0781A-AC2E-FC90-D5F3-DDAE4F709300">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="309" y="588" width="120" height="54"/>
+<bounds x="309" y="588" width="120" height="68"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="D13275BF-CA35-3859-CE22-4EF96E89C409" otype="Entity" vid="2E2DC8CE-D6EB-8ED9-EA22-1AD7663262AC">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>

@@ -4,7 +4,7 @@
 <createdTime>2020-09-26 20:28:31 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="B462B1E4-98A2-F41E-0D77-90F5D89D8049" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,7 +20,7 @@
 <createdTime>2020-09-26 20:29:16 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="B462B1E4-98A2-F41E-0D77-90F5D89D8049" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -33,7 +33,7 @@
 <generatorID>90D60F73-928C-722D-E217-DBC7C2BA9248</generatorID>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="B462B1E4-98A2-F41E-0D77-90F5D89D8049" value="true"/>
 </engineerTo>
 <referedAttribute>71A890F6-B717-C746-2604-ECC4358EB35B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -46,7 +46,7 @@
 <createdTime>2020-09-26 21:51:06 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="B462B1E4-98A2-F41E-0D77-90F5D89D8049" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -54,14 +54,29 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="descripcion" id="1968A0C7-0E1D-27A9-08AF-97D2E0B528EA">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-09-26 22:41:31 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<engineerTo>
+<item key="B462B1E4-98A2-F41E-0D77-90F5D89D8049" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="433D5E13-F4F6-9A37-78EC-35677FA5CB1F" name="Penalties PK">
 <createdBy>Bruno</createdBy>
 <createdTime>2020-09-26 20:29:50 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="B462B1E4-98A2-F41E-0D77-90F5D89D8049" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
