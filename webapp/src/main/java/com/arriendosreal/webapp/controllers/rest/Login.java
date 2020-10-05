@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import com.arriendosreal.webapp.entities.UsersAccess;
 import com.arriendosreal.webapp.entities.Users;
+import com.arriendosreal.webapp.repositories.UsersAccess;
 
 @RestController
 public class Login {
@@ -25,7 +25,7 @@ public class Login {
 		
 		Users user = userRepo.findByEmail(email);
 		if(user.getPassword().contentEquals(password.toString())) {
-			String json = String.format("{\"email\": \"%s\", \"profile\": \"%s\"}", user.getEmail(), user.getProfile());
+			String json = String.format("{\"email\": \"%s\", \"profile\": \"%s\"}", user.getEmail(), user.getProfiles());
 			return new ResponseEntity<>(json, HttpStatus.OK	);
 		} else {
 			return new ResponseEntity<>("Wrong creds", HttpStatus.UNAUTHORIZED);
