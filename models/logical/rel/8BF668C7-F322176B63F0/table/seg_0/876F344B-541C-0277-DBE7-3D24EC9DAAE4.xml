@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="876F344B-541C-0277-DBE7-3D24EC9DAAE4" name="Departmentos">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>381FB795-5EB2-62C8-76A8-DE4EBE17B5FA</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_departmento" id="B051E64F-4D48-AB62-1F25-00B705F17EE4">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>808E8EFA-104A-0CCE-8BAC-B9CD747AC9F6</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="698AF1F7-A93B-62FC-2986-4CF0E0EF4D1D">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>76BAEB0A-4782-870C-5BDB-8ACD09DF43ED</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="direccion" id="D63CF73F-05C5-C87C-7AFA-C0039F71ABFC">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>20EB3992-0298-7181-5570-8723314D02D9</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="region" id="1BD4B445-08BF-42FC-0477-30FEA3E812D2">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>8DD6613F-3071-FD66-3F44-68E4564BAE24</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ciudad" id="204BC430-7B21-5F4B-754F-2285DBDFA177">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>CEDA7A81-2C32-C9E7-27C0-537A20272588</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio" id="603172DF-DE07-C9F5-9217-A3F8A67FC27F">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>6D65CED7-B6D9-4337-C523-183E57FDBC41</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="disponibilidad" id="293A9CE1-C22E-F8AD-A14C-D82D128AA2D0">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>4C2E0829-D638-2DB6-020E-51573F452299</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EA0FD935-398E-F61E-5C06-51F30479C370" name="Departmentos_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>4C3F5DAD-1D64-310C-8E1A-BC2951654EAD</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B051E64F-4D48-AB62-1F25-00B705F17EE4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

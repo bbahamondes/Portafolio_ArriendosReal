@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.StoredProcedureParameter;
+import javax.persistence.ParameterMode;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,6 +20,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "USERS")
+@NamedStoredProcedureQuery(name = "USERS.sp_i_users", 
+procedureName = "sp_i_users", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class)})
+
 public class Users implements java.io.Serializable {
 
 	private BigDecimal userId;

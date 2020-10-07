@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C186AFE7-FCF3-ECE9-854F-146B7EDFFF4C" name="Mantenciones">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>87B7A800-3097-5170-1EFD-3905F439D254</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_mantencion" id="235BD2DF-17BA-EC53-82F8-AA1421BBCA8F">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>29F80415-145D-A706-DA12-ED5CE97C2E3E</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_inicio" id="A17397FA-C603-8B87-1CF0-BA6A0B2ADA3E">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>374172C7-BA0B-5CA5-39CB-43E25A7C4FA1</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="costo" id="79445E74-F143-7F7B-4EE9-174223A1FA93">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>263166BC-77D4-150F-7EAF-A7FE679BA0D9</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="42F247BA-B53F-0895-6D83-48E7FAB3EC92">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>C7AA839E-B7BF-A56B-E362-EC5EB2A4423C</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Departmentos_id_departmento" id="B54871E0-D29C-A1F5-66BB-DEBB9D6D2CBF">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>176F8CD6-3152-208D-8CAB-9C3068CD6488</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="97542C74-82C0-8C8F-FD21-50F5D0203941" referredColumn="B051E64F-4D48-AB62-1F25-00B705F17EE4"/>
+</associations>
+</Column>
+<Column name="fecha_termino" id="B92A64CE-5BEE-808D-57A1-BAC758AE0C9C">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>C9FB2EBA-B36E-3B58-4645-467F2DE0D3A6</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F23C5FE3-3C61-23AB-2C88-07536CF889D0" name="Mantenciones_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>9D0CBB25-9120-6B1B-B4DA-398A92736859</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="235BD2DF-17BA-EC53-82F8-AA1421BBCA8F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D284900B-6673-A6BF-C86F-2F4610B8F351" name="Mantenciones_Departmentos_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>214A0F88-8DBA-064B-62AC-1D0F4F59EF6C</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B54871E0-D29C-A1F5-66BB-DEBB9D6D2CBF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

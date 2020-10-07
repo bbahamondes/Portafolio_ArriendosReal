@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3955BBDD-5253-1449-45BC-A77DC175D25D" containerWithKeyObject="DAEC065E-C7E2-901C-64E3-9E72C343D45E" localFKIndex="80781635-B184-D7FA-6E4B-A3AD071E2F3D" name="Estadias_CheckOut_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>20709C08-070A-A8FC-ECA7-10EE18ABF6A3</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<referredTableLongName>CheckOut</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7A955C56-8B9D-A936-ADCE-4C486B43BD05</referredTableID>
+<keyObject>CF8ACA32-1579-3EC5-6237-01DBC721D739</keyObject>
+<referredKeyID>CF8ACA32-1579-3EC5-6237-01DBC721D739</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_checkout</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

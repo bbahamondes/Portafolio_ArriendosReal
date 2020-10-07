@@ -1,0 +1,150 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="16C061FA-C41B-0085-879E-D7B808F1B898" name="Reservas">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>1B90C997-91AE-C5AD-25A0-7096FAE87C0D</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_reserva" id="DA677BA0-AFD0-FFD4-E238-C3F32DFC243E">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>815D6156-5BBD-3043-3C5B-3EEE30432AB6</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_entrada" id="5D93A8C1-C477-44D6-0896-885C5C6E9A9A">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>1DBAD7FB-CF16-FFDE-3F3E-30F6E1E4A464</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_salida" id="6B777CFE-598C-15C7-514A-DBDBF50F57DD">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>B580AF73-BA56-C242-1C61-F247537EC335</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Departmentos_id_departmento" id="E86C261E-DC09-91A3-CC3C-1006DA7C322D">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>16604B34-8691-6975-F138-18EAF86970FB</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EE78210A-D2B0-0272-F96F-B7CE93EB33FA" referredColumn="B051E64F-4D48-AB62-1F25-00B705F17EE4"/>
+</associations>
+</Column>
+<Column name="Personas_id_persona" id="7BC7DF50-0AF3-7D11-34F3-01F3BC9C60C6">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>54519422-0EC7-437E-4A3F-EC2E5C694C00</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6FC448E0-AF55-5214-C56F-3B093E94FA66" referredColumn="8DD88443-D47C-07EC-7055-79CF9AA58C02"/>
+</associations>
+</Column>
+<Column name="Estadias_id_estadia" id="D9F9874C-EAF4-715B-251D-274B9AF9E2A8">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>A894312F-12C2-2D5D-9998-1E7B5CE61FD6</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D137BB20-654C-0BCC-E9C9-362E144ACF64" referredColumn="0BF84081-7E4D-3779-D0A4-9A70F49B7389"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5A871576-023B-38EC-CF47-835EF413DD42" name="Reservas_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>32826093-2938-5D4B-1525-065E1A5313C7</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA677BA0-AFD0-FFD4-E238-C3F32DFC243E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E5375F81-7864-5B57-D2DD-DB93F6A42220" name="Reservas__IDX">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>06AB7797-EE8F-B20A-7274-17A54AA6B668</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="D9F9874C-EAF4-715B-251D-274B9AF9E2A8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="260F518D-8098-B933-46A0-065EE2CD2159" name="Reservas_Departmentos_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>C232713F-0EB1-CFC0-1C2D-A06E471AC094</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E86C261E-DC09-91A3-CC3C-1006DA7C322D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="610F1BC6-D186-7AEE-2FEB-CADBBD3EFC79" name="Reservas_Personas_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>C930CEF5-1BF2-94B8-CF0C-5173103798E1</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7BC7DF50-0AF3-7D11-34F3-01F3BC9C60C6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="576837C0-CA24-773A-5E76-ABA4661FB753" name="Reservas_Estadias_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-06 23:25:40 UTC</createdTime>
+<generatorID>06AB7797-EE8F-B20A-7274-17A54AA6B668</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D9F9874C-EAF4-715B-251D-274B9AF9E2A8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
