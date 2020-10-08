@@ -280,11 +280,11 @@ END;
 END;
 
  --SPS Mantenciones-----------------------------------------------------------------------------------------
- CREATE PROCEDURE SP_CREAR_MANTENCIONES (@idDepartamento INTEGER,@Descripción VARCHAR(50),@fecha DATETIME,@costo INTEGER) AS
+ CREATE PROCEDURE SP_CREAR_MANTENCIONES (@idDepartamento INTEGER,@Descripcion VARCHAR(50),@fecha_inicio DATETIME,@fecha_termino DATETIME,@costo INTEGER) AS
    
    BEGIN
-      INSERT INTO Mantenciones (idDepartamento,Descripción,fecha,costo)
-      VALUES (@idDepartamento,@Descripción,@fecha,@costo);
+      INSERT INTO Mantenciones (Departamentos_id_departamento, descripcion, fecha_inicio, fecha_termino, costo)
+      VALUES (@idDepartamento,@Descripcion,@fecha_inicio,@fecha_termino,@costo);
    END;
    
  CREATE PROCEDURE SP_GET_MANTENCIONES
@@ -298,10 +298,10 @@ END;
       DELETE FROM Mantenciones WHERE id_mantencion = @id_mantencion;
    END;
    
- CREATE PROCEDURE SP_UPD_MANTENCIONES (@id_mantencion INTEGER,@idDepartamento INTEGER,@Descripción VARCHAR(50),@fecha DATETIME,@costo INTEGER) AS
+ CREATE PROCEDURE SP_UPD_MANTENCIONES (@id_mantencion INTEGER,@fecha_inicio DATETIME, @costo INTEGER, @descripcion VARCHAR2(250), @Departamentos_id_departamento INTEGER, @fecha_termino DATETIME) AS
    
    BEGIN
-     UPDATE Mantenciones SET idDepartamento=@idDepartamento,Descripción=@Descripción,fecha=@fecha,costo=@costo WHERE id_mantencion = @id_mantencion; 
+     UPDATE Mantenciones SET fecha_inicio=@fecha_inicio,costo=@costo,descripcion=@descripcion,Departamentos_id_departamento=@Departamentos_id_departamento,fecha_termino=@fecha_termino WHERE id_mantencion = @id_mantencion; 
 END;
 
  --SPS Resumen-----------------------------------------------------------------------------------------
@@ -330,11 +330,11 @@ END;
 END;*/
 
  --SPS Users-----------------------------------------------------------------------------------------
- CREATE PROCEDURE SP_CREAR_USERS (@ingreso INTEGER,@egreso INTEGER,@fecha DATETIME) AS
+ CREATE PROCEDURE SP_CREAR_USERS (@username VARCHAR2(50), @email VARCHAR2(50), @password VARCHAR2(50), @profile_id INTEGER) AS
    
    BEGIN
       INSERT INTO Users (username,email,password,Profile_profile_id)
-      VALUES (@username,@email,@password,@Profile_profile_id);
+      VALUES (@username,@email,@password,@profile_id);
    END;
    
  CREATE PROCEDURE SP_GET_USERS
@@ -348,10 +348,10 @@ END;*/
       DELETE FROM Users WHERE user_id = @user_id;
    END;
    
- CREATE PROCEDURE SP_UPD_USERS (@user_id INTEGER,@ingreso INTEGER,@egreso INTEGER,@fecha DATETIME) AS
+ CREATE PROCEDURE SP_UPD_USERS (@user_id INTEGER,@username VARCHAR2(50), @email VARCHAR2(50), @password VARCHAR2(50), @profile_id INTEGER) AS
    
    BEGIN
-     UPDATE Users SET username=@username,email=@email,password=@password,Profile_profile_id=@Profile_profile_id WHERE user_id = @user_id; 
+     UPDATE Users SET username=@username,email=@email,password=@password,Profile_profile_id=@profile_id WHERE user_id = @user_id; 
 END;
 
  --SPS Profiles-----------------------------------------------------------------------------------------
