@@ -10,7 +10,7 @@
 -- predefined type, no DDL - XMLTYPE
 
 CREATE TABLE acompanantes (
-    id_acompanante       INTEGER NOT NULL,
+    id_acompanante       INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     rut                  VARCHAR2(50),
     nombre               VARCHAR2(50),
     apellido_pat         VARCHAR2(50),
@@ -21,7 +21,7 @@ CREATE TABLE acompanantes (
 ALTER TABLE acompanantes ADD CONSTRAINT acompanantes_pk PRIMARY KEY ( id_acompanante );
 
 CREATE TABLE checkin (
-    id_checkin  INTEGER NOT NULL,
+    id_checkin  INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     fecha       DATE,
     pago        INTEGER
 );
@@ -36,7 +36,7 @@ CREATE TABLE checkout (
 ALTER TABLE checkout ADD CONSTRAINT checkout_pk PRIMARY KEY ( id_checkout );
 
 CREATE TABLE departmentos (
-    id_departmento  INTEGER NOT NULL,
+    id_departmento  INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     nombre          VARCHAR2(50) NOT NULL,
     direccion       VARCHAR2(100),
     region          VARCHAR2(50),
@@ -48,7 +48,7 @@ CREATE TABLE departmentos (
 ALTER TABLE departmentos ADD CONSTRAINT departmentos_pk PRIMARY KEY ( id_departmento );
 
 CREATE TABLE estadias (
-    id_estadia            INTEGER NOT NULL,
+    id_estadia            INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     checkin_id_checkin    INTEGER NOT NULL,
     checkout_id_checkout  INTEGER NOT NULL
 );
@@ -66,7 +66,7 @@ CREATE UNIQUE INDEX estadias__idxv1 ON
 ALTER TABLE estadias ADD CONSTRAINT estadias_pk PRIMARY KEY ( id_estadia );
 
 CREATE TABLE inventarios (
-    id_inventario                INTEGER NOT NULL,
+    id_inventario                INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     descripcion                  VARCHAR2(50),
     departmentos_id_departmento  INTEGER NOT NULL
 );
@@ -74,7 +74,7 @@ CREATE TABLE inventarios (
 ALTER TABLE inventarios ADD CONSTRAINT inventarios_pk PRIMARY KEY ( id_inventario );
 
 CREATE TABLE mantenciones (
-    id_mantencion                INTEGER NOT NULL,
+    id_mantencion                INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     fecha_inicio                 DATE,
     costo                        INTEGER,
     descripcion                  VARCHAR2(250),
@@ -85,7 +85,7 @@ CREATE TABLE mantenciones (
 ALTER TABLE mantenciones ADD CONSTRAINT mantenciones_pk PRIMARY KEY ( id_mantencion );
 
 CREATE TABLE multas (
-    id_multas             INTEGER NOT NULL,
+    id_multas             INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     checkout_id_checkout  INTEGER NOT NULL,
     monto_multa           INTEGER,
     descripcion           VARCHAR2(250)
@@ -94,7 +94,7 @@ CREATE TABLE multas (
 ALTER TABLE multas ADD CONSTRAINT multas_pk PRIMARY KEY ( id_multas );
 
 CREATE TABLE personas (
-    id_persona     INTEGER NOT NULL,
+    id_persona     INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     rut            VARCHAR2(50) NOT NULL,
     nombre         VARCHAR2(50),
     apellidos      VARCHAR2(50),
@@ -110,14 +110,14 @@ CREATE UNIQUE INDEX personas__idx ON
 ALTER TABLE personas ADD CONSTRAINT personas_pk PRIMARY KEY ( id_persona );
 
 CREATE TABLE profiles (
-    profile_id    INTEGER NOT NULL,
+    profile_id    INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     profile_name  VARCHAR2(50)
 );
 
 ALTER TABLE profiles ADD CONSTRAINT profiles_pk PRIMARY KEY ( profile_id );
 
 CREATE TABLE reservas (
-    id_reserva                   INTEGER NOT NULL,
+    id_reserva                   INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     fecha_entrada                DATE,
     fecha_salida                 DATE,
     departmentos_id_departmento  INTEGER NOT NULL,
@@ -133,7 +133,7 @@ CREATE UNIQUE INDEX reservas__idx ON
 ALTER TABLE reservas ADD CONSTRAINT reservas_pk PRIMARY KEY ( id_reserva );
 
 CREATE TABLE resumen (
-    id_resumen  INTEGER NOT NULL,
+    id_resumen  INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     ingreso     INTEGER,
     egreso      INTEGER,
     fecha       DATE
@@ -142,7 +142,7 @@ CREATE TABLE resumen (
 ALTER TABLE resumen ADD CONSTRAINT resumen_pk PRIMARY KEY ( id_resumen );
 
 CREATE TABLE servicios (
-    id_servicio                  INTEGER NOT NULL,
+    id_servicio                  INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     departmentos_id_departmento  INTEGER NOT NULL,
     descripcion                  VARCHAR2(250),
     costo_operacion              INTEGER,
@@ -158,14 +158,14 @@ CREATE UNIQUE INDEX servicios__idx ON
 ALTER TABLE servicios ADD CONSTRAINT servicios_pk PRIMARY KEY ( id_servicio );
 
 CREATE TABLE tipos_servicio (
-    id_tipo      INTEGER NOT NULL,
+    id_tipo      INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     descripcion  VARCHAR2(250)
 );
 
 ALTER TABLE tipos_servicio ADD CONSTRAINT tipos_servicio_pk PRIMARY KEY ( id_tipo );
 
 CREATE TABLE users (
-    user_id              INTEGER NOT NULL,
+    user_id              INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     username             VARCHAR2(50) NOT NULL,
     email                VARCHAR2(50) NOT NULL,
     password             VARCHAR2(50) NOT NULL,
