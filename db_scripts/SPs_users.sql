@@ -1,10 +1,10 @@
 -- CREATE
 
 CREATE OR REPLACE PROCEDURE SP_CREAR_USERS (
-	username IN VARCHAR2,
-	email IN VARCHAR2,
-	password IN VARCHAR2,
-	profile_id IN INTEGER,
+    username IN VARCHAR2,
+    email IN VARCHAR2,
+    password IN VARCHAR2,
+    profile_id IN INTEGER,
     resultado OUT NUMBER)
 AS BEGIN
     resultado := 0;
@@ -48,13 +48,13 @@ END;
 -- DELETE
 
 CREATE OR REPLACE PROCEDURE SP_DEL_USERS (
-	user_id IN NUMBER,
-	estado OUT NUMBER) AS
+    user_id IN NUMBER,
+    estado OUT NUMBER) AS
 
 BEGIN
-	estado := 0;
-	DELETE FROM Users WHERE USER_ID = user_id;
-	EXCEPTION
-		WHEN OTHERS THEN
-			estado := -1;
+    estado := 0;
+    DELETE FROM Users WHERE USER_ID = user_id;
+    EXCEPTION
+        WHEN OTHERS THEN
+            estado := -1;
 END;
