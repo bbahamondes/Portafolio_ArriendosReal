@@ -7,7 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +18,29 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "DEPARTMENTOS")
+@NamedStoredProcedureQuery(name = "Departmentos.createDepartmento", procedureName = "SP_CREAR_DEPARTAMENTO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_direccion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_region", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_ciudad", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_precio", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_disponibilidad", type = Character.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Departmentos.deleteDepartmento", procedureName = "SP_DEL_DEPARTAMENTO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Departmentos.updateDepartmento", procedureName = "SP_UPD_DEPARTAMENTO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_direccion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_region", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_ciudad", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_precio", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_disponibilidad", type = Boolean.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
 public class Departmentos implements java.io.Serializable {
 
     private BigDecimal idDepartmento;
