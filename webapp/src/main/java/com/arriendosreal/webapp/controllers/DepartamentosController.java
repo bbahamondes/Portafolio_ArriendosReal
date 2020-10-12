@@ -73,7 +73,7 @@ public class DepartamentosController {
 
         int resultado = 0;
         try {
-            char test = disponibilidad ? '1' : '0';
+            int test = disponibilidad ? 1 : 0;
             resultado = departmentoRepo.createDepartamento(nombre, direccion, region, ciudad, precio, test);
         } catch (Exception e) {
             throw e;

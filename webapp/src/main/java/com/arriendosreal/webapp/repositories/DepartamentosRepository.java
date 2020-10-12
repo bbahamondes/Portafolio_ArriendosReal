@@ -12,19 +12,19 @@ public interface DepartamentosRepository extends JpaRepository<Departmentos, Int
     // List<Users> findByProfile(String profile);
 
     Optional<Departmentos> findByIdDepartmento(int departamentoId);
-
-    @Procedure(procedureName = "Departmentos.createDepartmento")
+    
+    @Procedure(name = "Departmentos.createDepartmento")
     int createDepartamento(@Param("in_nombre") String nombre, 
             @Param("in_direccion") String direccion,
             @Param("in_region") String region,
             @Param("in_ciudad") String ciudad,
             @Param("in_precio") int precio,
-            @Param("in_disponibilidad") char disponibilidad);
+            @Param("in_disponibilidad") int disponibilidad);
 
-    @Procedure(procedureName = "Departmentos.deleteDepartmento")
+    @Procedure(name = "Departmentos.deleteDepartmento")
     int deleteDepartamento(@Param("in_id_departamento") int departamentoId);
 
-    @Procedure(procedureName = "Departmentos.updateDepartmento")
+    @Procedure(name = "Departmentos.updateDepartmento")
     int updateDepartamento(@Param("in_id_departamento") int departamentoId, 
             @Param("in_nombre") String nombre, 
             @Param("in_direccion") String direccion,

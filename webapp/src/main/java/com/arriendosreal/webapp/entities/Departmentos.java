@@ -24,7 +24,7 @@ import javax.persistence.Table;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_region", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_ciudad", type = String.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_precio", type = Integer.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_disponibilidad", type = Character.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_disponibilidad", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
 @NamedStoredProcedureQuery(name = "Departmentos.deleteDepartmento", procedureName = "SP_DEL_DEPARTAMENTO", parameters = {
