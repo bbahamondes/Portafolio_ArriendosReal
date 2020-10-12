@@ -16,86 +16,86 @@ import javax.persistence.Table;
 @Table(name = "ACOMPANANTES")
 public class Acompanantes implements java.io.Serializable {
 
-	private BigDecimal idAcompanante;
-	private Reservas reservas;
-	private String rut;
-	private String nombre;
-	private String apellidoPat;
-	private String apellidoMat;
+    private BigDecimal idAcompanante;
+    private Reservas reservas;
+    private String rut;
+    private String nombre;
+    private String apellidoPat;
+    private String apellidoMat;
 
-	public Acompanantes() {
-	}
+    public Acompanantes() {
+    }
 
-	public Acompanantes(BigDecimal idAcompanante, Reservas reservas) {
-		this.idAcompanante = idAcompanante;
-		this.reservas = reservas;
-	}
+    public Acompanantes(BigDecimal idAcompanante, Reservas reservas) {
+        this.idAcompanante = idAcompanante;
+        this.reservas = reservas;
+    }
 
-	public Acompanantes(BigDecimal idAcompanante, Reservas reservas, String rut, String nombre, String apellidoPat,
-			String apellidoMat) {
-		this.idAcompanante = idAcompanante;
-		this.reservas = reservas;
-		this.rut = rut;
-		this.nombre = nombre;
-		this.apellidoPat = apellidoPat;
-		this.apellidoMat = apellidoMat;
-	}
+    public Acompanantes(BigDecimal idAcompanante, Reservas reservas, String rut, String nombre, String apellidoPat,
+            String apellidoMat) {
+        this.idAcompanante = idAcompanante;
+        this.reservas = reservas;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.apellidoPat = apellidoPat;
+        this.apellidoMat = apellidoMat;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_ACOMPANANTE", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdAcompanante() {
-		return this.idAcompanante;
-	}
+    @Column(name = "ID_ACOMPANANTE", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdAcompanante() {
+        return this.idAcompanante;
+    }
 
-	public void setIdAcompanante(BigDecimal idAcompanante) {
-		this.idAcompanante = idAcompanante;
-	}
+    public void setIdAcompanante(BigDecimal idAcompanante) {
+        this.idAcompanante = idAcompanante;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "RESERVAS_ID_RESERVA", nullable = false)
-	public Reservas getReservas() {
-		return this.reservas;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RESERVAS_ID_RESERVA", nullable = false)
+    public Reservas getReservas() {
+        return this.reservas;
+    }
 
-	public void setReservas(Reservas reservas) {
-		this.reservas = reservas;
-	}
+    public void setReservas(Reservas reservas) {
+        this.reservas = reservas;
+    }
 
-	@Column(name = "RUT", length = 50)
-	public String getRut() {
-		return this.rut;
-	}
+    @Column(name = "RUT", length = 50)
+    public String getRut() {
+        return this.rut;
+    }
 
-	public void setRut(String rut) {
-		this.rut = rut;
-	}
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
 
-	@Column(name = "NOMBRE", length = 50)
-	public String getNombre() {
-		return this.nombre;
-	}
+    @Column(name = "NOMBRE", length = 50)
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	@Column(name = "APELLIDO_PAT", length = 50)
-	public String getApellidoPat() {
-		return this.apellidoPat;
-	}
+    @Column(name = "APELLIDO_PAT", length = 50)
+    public String getApellidoPat() {
+        return this.apellidoPat;
+    }
 
-	public void setApellidoPat(String apellidoPat) {
-		this.apellidoPat = apellidoPat;
-	}
+    public void setApellidoPat(String apellidoPat) {
+        this.apellidoPat = apellidoPat;
+    }
 
-	@Column(name = "APELLIDO_MAT", length = 50)
-	public String getApellidoMat() {
-		return this.apellidoMat;
-	}
+    @Column(name = "APELLIDO_MAT", length = 50)
+    public String getApellidoMat() {
+        return this.apellidoMat;
+    }
 
-	public void setApellidoMat(String apellidoMat) {
-		this.apellidoMat = apellidoMat;
-	}
+    public void setApellidoMat(String apellidoMat) {
+        this.apellidoMat = apellidoMat;
+    }
 
 }

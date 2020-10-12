@@ -17,50 +17,50 @@ import javax.persistence.Table;
 @Table(name = "TIPOS_SERVICIO")
 public class TiposServicio implements java.io.Serializable {
 
-	private BigDecimal idTipo;
-	private String descripcion;
-	private Set<Servicios> servicioses = new HashSet<Servicios>(0);
+    private BigDecimal idTipo;
+    private String descripcion;
+    private Set<Servicios> servicioses = new HashSet<Servicios>(0);
 
-	public TiposServicio() {
-	}
+    public TiposServicio() {
+    }
 
-	public TiposServicio(BigDecimal idTipo) {
-		this.idTipo = idTipo;
-	}
+    public TiposServicio(BigDecimal idTipo) {
+        this.idTipo = idTipo;
+    }
 
-	public TiposServicio(BigDecimal idTipo, String descripcion, Set<Servicios> servicioses) {
-		this.idTipo = idTipo;
-		this.descripcion = descripcion;
-		this.servicioses = servicioses;
-	}
+    public TiposServicio(BigDecimal idTipo, String descripcion, Set<Servicios> servicioses) {
+        this.idTipo = idTipo;
+        this.descripcion = descripcion;
+        this.servicioses = servicioses;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_TIPO", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdTipo() {
-		return this.idTipo;
-	}
+    @Column(name = "ID_TIPO", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdTipo() {
+        return this.idTipo;
+    }
 
-	public void setIdTipo(BigDecimal idTipo) {
-		this.idTipo = idTipo;
-	}
+    public void setIdTipo(BigDecimal idTipo) {
+        this.idTipo = idTipo;
+    }
 
-	@Column(name = "DESCRIPCION", length = 250)
-	public String getDescripcion() {
-		return this.descripcion;
-	}
+    @Column(name = "DESCRIPCION", length = 250)
+    public String getDescripcion() {
+        return this.descripcion;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tiposServicio")
-	public Set<Servicios> getServicioses() {
-		return this.servicioses;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tiposServicio")
+    public Set<Servicios> getServicioses() {
+        return this.servicioses;
+    }
 
-	public void setServicioses(Set<Servicios> servicioses) {
-		this.servicioses = servicioses;
-	}
+    public void setServicioses(Set<Servicios> servicioses) {
+        this.servicioses = servicioses;
+    }
 
 }

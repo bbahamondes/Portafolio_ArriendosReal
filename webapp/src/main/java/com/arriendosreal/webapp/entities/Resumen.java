@@ -16,62 +16,62 @@ import javax.persistence.TemporalType;
 @Table(name = "RESUMEN")
 public class Resumen implements java.io.Serializable {
 
-	private BigDecimal idResumen;
-	private BigDecimal ingreso;
-	private BigDecimal egreso;
-	private Date fecha;
+    private BigDecimal idResumen;
+    private BigDecimal ingreso;
+    private BigDecimal egreso;
+    private Date fecha;
 
-	public Resumen() {
-	}
+    public Resumen() {
+    }
 
-	public Resumen(BigDecimal idResumen) {
-		this.idResumen = idResumen;
-	}
+    public Resumen(BigDecimal idResumen) {
+        this.idResumen = idResumen;
+    }
 
-	public Resumen(BigDecimal idResumen, BigDecimal ingreso, BigDecimal egreso, Date fecha) {
-		this.idResumen = idResumen;
-		this.ingreso = ingreso;
-		this.egreso = egreso;
-		this.fecha = fecha;
-	}
+    public Resumen(BigDecimal idResumen, BigDecimal ingreso, BigDecimal egreso, Date fecha) {
+        this.idResumen = idResumen;
+        this.ingreso = ingreso;
+        this.egreso = egreso;
+        this.fecha = fecha;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_RESUMEN", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdResumen() {
-		return this.idResumen;
-	}
+    @Column(name = "ID_RESUMEN", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdResumen() {
+        return this.idResumen;
+    }
 
-	public void setIdResumen(BigDecimal idResumen) {
-		this.idResumen = idResumen;
-	}
+    public void setIdResumen(BigDecimal idResumen) {
+        this.idResumen = idResumen;
+    }
 
-	@Column(name = "INGRESO", precision = 22, scale = 0)
-	public BigDecimal getIngreso() {
-		return this.ingreso;
-	}
+    @Column(name = "INGRESO", precision = 22, scale = 0)
+    public BigDecimal getIngreso() {
+        return this.ingreso;
+    }
 
-	public void setIngreso(BigDecimal ingreso) {
-		this.ingreso = ingreso;
-	}
+    public void setIngreso(BigDecimal ingreso) {
+        this.ingreso = ingreso;
+    }
 
-	@Column(name = "EGRESO", precision = 22, scale = 0)
-	public BigDecimal getEgreso() {
-		return this.egreso;
-	}
+    @Column(name = "EGRESO", precision = 22, scale = 0)
+    public BigDecimal getEgreso() {
+        return this.egreso;
+    }
 
-	public void setEgreso(BigDecimal egreso) {
-		this.egreso = egreso;
-	}
+    public void setEgreso(BigDecimal egreso) {
+        this.egreso = egreso;
+    }
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "FECHA", length = 7)
-	public Date getFecha() {
-		return this.fecha;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA", length = 7)
+    public Date getFecha() {
+        return this.fecha;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
 }

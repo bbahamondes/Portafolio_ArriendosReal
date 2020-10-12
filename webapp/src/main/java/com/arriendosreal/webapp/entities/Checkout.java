@@ -20,62 +20,62 @@ import javax.persistence.TemporalType;
 @Table(name = "CHECKOUT")
 public class Checkout implements java.io.Serializable {
 
-	private BigDecimal idCheckout;
-	private Date fecha;
-	private Set<Multas> multases = new HashSet<Multas>(0);
-	private Set<Estadias> estadiases = new HashSet<Estadias>(0);
+    private BigDecimal idCheckout;
+    private Date fecha;
+    private Set<Multas> multases = new HashSet<Multas>(0);
+    private Set<Estadias> estadiases = new HashSet<Estadias>(0);
 
-	public Checkout() {
-	}
+    public Checkout() {
+    }
 
-	public Checkout(BigDecimal idCheckout) {
-		this.idCheckout = idCheckout;
-	}
+    public Checkout(BigDecimal idCheckout) {
+        this.idCheckout = idCheckout;
+    }
 
-	public Checkout(BigDecimal idCheckout, Date fecha, Set<Multas> multases, Set<Estadias> estadiases) {
-		this.idCheckout = idCheckout;
-		this.fecha = fecha;
-		this.multases = multases;
-		this.estadiases = estadiases;
-	}
+    public Checkout(BigDecimal idCheckout, Date fecha, Set<Multas> multases, Set<Estadias> estadiases) {
+        this.idCheckout = idCheckout;
+        this.fecha = fecha;
+        this.multases = multases;
+        this.estadiases = estadiases;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_CHECKOUT", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdCheckout() {
-		return this.idCheckout;
-	}
+    @Column(name = "ID_CHECKOUT", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdCheckout() {
+        return this.idCheckout;
+    }
 
-	public void setIdCheckout(BigDecimal idCheckout) {
-		this.idCheckout = idCheckout;
-	}
+    public void setIdCheckout(BigDecimal idCheckout) {
+        this.idCheckout = idCheckout;
+    }
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "FECHA", length = 7)
-	public Date getFecha() {
-		return this.fecha;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA", length = 7)
+    public Date getFecha() {
+        return this.fecha;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "checkout")
-	public Set<Multas> getMultases() {
-		return this.multases;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "checkout")
+    public Set<Multas> getMultases() {
+        return this.multases;
+    }
 
-	public void setMultases(Set<Multas> multases) {
-		this.multases = multases;
-	}
+    public void setMultases(Set<Multas> multases) {
+        this.multases = multases;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "checkout")
-	public Set<Estadias> getEstadiases() {
-		return this.estadiases;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "checkout")
+    public Set<Estadias> getEstadiases() {
+        return this.estadiases;
+    }
 
-	public void setEstadiases(Set<Estadias> estadiases) {
-		this.estadiases = estadiases;
-	}
+    public void setEstadiases(Set<Estadias> estadiases) {
+        this.estadiases = estadiases;
+    }
 
 }

@@ -20,119 +20,112 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "USERS")
-@NamedStoredProcedureQuery(name = "Users.createUser", 
-procedureName = "SP_CREAR_USERS", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_username", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_email", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_password", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+@NamedStoredProcedureQuery(name = "Users.createUser", procedureName = "SP_CREAR_USERS", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_username", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_email", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_password", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
-@NamedStoredProcedureQuery(name = "Users.updateUser", 
-procedureName = "SP_UPD_USERS", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_user_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_username", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_email", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_password", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+@NamedStoredProcedureQuery(name = "Users.updateUser", procedureName = "SP_UPD_USERS", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_user_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_username", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_email", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_password", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
-@NamedStoredProcedureQuery(name = "Users.getUserById",
-procedureName = "SP_GET_USERS", resultClasses= String.class, parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = void.class)
-})
+@NamedStoredProcedureQuery(name = "Users.getUserById", procedureName = "SP_GET_USERS", resultClasses = String.class, parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = void.class) })
 
-@NamedStoredProcedureQuery(name = "Users.deleteUser",
-procedureName = "SP_DEL_USERS", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_user_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)
-})
+@NamedStoredProcedureQuery(name = "Users.deleteUser", procedureName = "SP_DEL_USERS", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_user_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
 
 public class Users implements java.io.Serializable {
 
-	private int userId;
-	private int Profiles_Profile_Id;
-	private String username;
-	private String email;
-	private String password;
-	private Set<Personas> personases = new HashSet<Personas>(0);
+    private int userId;
+    private int Profiles_Profile_Id;
+    private String username;
+    private String email;
+    private String password;
+    private Set<Personas> personases = new HashSet<Personas>(0);
 
-	public Users() {
-	}
+    public Users() {
+    }
 
-	public Users(int userId, int profiles, String username, String email, String password) {
-		this.userId = userId;
-		this.Profiles_Profile_Id = profiles;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-	}
+    public Users(int userId, int profiles, String username, String email, String password) {
+        this.userId = userId;
+        this.Profiles_Profile_Id = profiles;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
-	public Users(int userId, int profiles, String username, String email, String password,
-			Set<Personas> personases) {
-		this.userId = userId;
-		this.Profiles_Profile_Id = profiles;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.personases = personases;
-	}
+    public Users(int userId, int profiles, String username, String email, String password, Set<Personas> personases) {
+        this.userId = userId;
+        this.Profiles_Profile_Id = profiles;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.personases = personases;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "USER_ID", unique = true, nullable = false, precision = 22, scale = 0)
-	public int getUserId() {
-		return this.userId;
-	}
+    @Column(name = "USER_ID", unique = true, nullable = false, precision = 22, scale = 0)
+    public int getUserId() {
+        return this.userId;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	@Column(name = "PROFILES_PROFILE_ID")
-	public int getProfiles() {
-		return this.Profiles_Profile_Id;
-	}
+    @Column(name = "PROFILES_PROFILE_ID")
+    public int getProfiles() {
+        return this.Profiles_Profile_Id;
+    }
 
-	public void setProfiles(int profiles) {
-		this.Profiles_Profile_Id = profiles;
-	}
+    public void setProfiles(int profiles) {
+        this.Profiles_Profile_Id = profiles;
+    }
 
-	@Column(name = "USERNAME", nullable = false, length = 50)
-	public String getUsername() {
-		return this.username;
-	}
+    @Column(name = "USERNAME", nullable = false, length = 50)
+    public String getUsername() {
+        return this.username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	@Column(name = "EMAIL", nullable = false, length = 50)
-	public String getEmail() {
-		return this.email;
-	}
+    @Column(name = "EMAIL", nullable = false, length = 50)
+    public String getEmail() {
+        return this.email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	@Column(name = "PASSWORD", nullable = false, length = 50)
-	public String getPassword() {
-		return this.password;
-	}
+    @Column(name = "PASSWORD", nullable = false, length = 50)
+    public String getPassword() {
+        return this.password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
-	public Set<Personas> getPersonases() {
-		return this.personases;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    public Set<Personas> getPersonases() {
+        return this.personases;
+    }
 
-	public void setPersonases(Set<Personas> personases) {
-		this.personases = personases;
-	}
+    public void setPersonases(Set<Personas> personases) {
+        this.personases = personases;
+    }
 
 }

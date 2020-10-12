@@ -22,124 +22,121 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "PERSONAS", uniqueConstraints = @UniqueConstraint(columnNames = "USERS_USER_ID"))
 
-@NamedStoredProcedureQuery(name = "Personas.createPersona", 
-procedureName = "SP_CREAR_PERSONA", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellidos", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_telefono", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Users_user_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+@NamedStoredProcedureQuery(name = "Personas.createPersona", procedureName = "SP_CREAR_PERSONA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellidos", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_telefono", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Users_user_id", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
-@NamedStoredProcedureQuery(name = "Personas.updatePersona", 
-procedureName = "SP_UPD_PERSONA", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_persona", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellidos", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_telefono", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+@NamedStoredProcedureQuery(name = "Personas.updatePersona", procedureName = "SP_UPD_PERSONA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_persona", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellidos", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_telefono", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
-@NamedStoredProcedureQuery(name = "Personas.deletePersona",
-procedureName = "SP_DEL_PERSONA", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_persona", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)})
+@NamedStoredProcedureQuery(name = "Personas.deletePersona", procedureName = "SP_DEL_PERSONA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_persona", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
 
 public class Personas implements java.io.Serializable {
 
-	private int idPersona;
-	private int users;
-	private String rut;
-	private String nombre;
-	private String apellidos;
-	private String telefono;
-	private Set<Reservas> reservases = new HashSet<Reservas>(0);
+    private int idPersona;
+    private int users;
+    private String rut;
+    private String nombre;
+    private String apellidos;
+    private String telefono;
+    private Set<Reservas> reservases = new HashSet<Reservas>(0);
 
-	public Personas() {
-	}
+    public Personas() {
+    }
 
-	public Personas(int idPersona, int users, String rut) {
-		this.idPersona = idPersona;
-		this.users = users;
-		this.rut = rut;
-	}
+    public Personas(int idPersona, int users, String rut) {
+        this.idPersona = idPersona;
+        this.users = users;
+        this.rut = rut;
+    }
 
-	public Personas(int idPersona, int users, String rut, String nombre, String apellidos, String telefono,
-			Set<Reservas> reservases) {
-		this.idPersona = idPersona;
-		this.users = users;
-		this.rut = rut;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.telefono = telefono;
-		this.reservases = reservases;
-	}
+    public Personas(int idPersona, int users, String rut, String nombre, String apellidos, String telefono,
+            Set<Reservas> reservases) {
+        this.idPersona = idPersona;
+        this.users = users;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.reservases = reservases;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_PERSONA", unique = true, nullable = false, precision = 22, scale = 0)
-	public int getIdPersona() {
-		return this.idPersona;
-	}
+    @Column(name = "ID_PERSONA", unique = true, nullable = false, precision = 22, scale = 0)
+    public int getIdPersona() {
+        return this.idPersona;
+    }
 
-	public void setIdPersona(int idPersona) {
-		this.idPersona = idPersona;
-	}
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
+    }
 
-	//@ManyToOne(fetch = FetchType.LAZY)
-	//@JoinColumn(name = "USERS_USER_ID", unique = true, nullable = false)
-	@Column(name = "USERS_USER_ID")
-	public int getUsers() {
-		return this.users;
-	}
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "USERS_USER_ID", unique = true, nullable = false)
+    @Column(name = "USERS_USER_ID")
+    public int getUsers() {
+        return this.users;
+    }
 
-	public void setUsers(int users) {
-		this.users = users;
-	}
+    public void setUsers(int users) {
+        this.users = users;
+    }
 
-	@Column(name = "RUT", nullable = false, length = 50)
-	public String getRut() {
-		return this.rut;
-	}
+    @Column(name = "RUT", nullable = false, length = 50)
+    public String getRut() {
+        return this.rut;
+    }
 
-	public void setRut(String rut) {
-		this.rut = rut;
-	}
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
 
-	@Column(name = "NOMBRE", length = 50)
-	public String getNombre() {
-		return this.nombre;
-	}
+    @Column(name = "NOMBRE", length = 50)
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	@Column(name = "APELLIDOS", length = 50)
-	public String getApellidos() {
-		return this.apellidos;
-	}
+    @Column(name = "APELLIDOS", length = 50)
+    public String getApellidos() {
+        return this.apellidos;
+    }
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
 
-	@Column(name = "TELEFONO", length = 50)
-	public String getTelefono() {
-		return this.telefono;
-	}
+    @Column(name = "TELEFONO", length = 50)
+    public String getTelefono() {
+        return this.telefono;
+    }
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set<Reservas> getReservases() {
-		return this.reservases;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+    public Set<Reservas> getReservases() {
+        return this.reservases;
+    }
 
-	public void setReservases(Set<Reservas> reservases) {
-		this.reservases = reservases;
-	}
+    public void setReservases(Set<Reservas> reservases) {
+        this.reservases = reservases;
+    }
 
 }

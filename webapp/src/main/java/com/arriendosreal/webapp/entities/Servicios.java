@@ -17,88 +17,88 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "SERVICIOS", uniqueConstraints = @UniqueConstraint(columnNames = "TIPOS_SERVICIO_ID_TIPO"))
 public class Servicios implements java.io.Serializable {
 
-	private BigDecimal idServicio;
-	private Departmentos departmentos;
-	private TiposServicio tiposServicio;
-	private String descripcion;
-	private BigDecimal costoOperacion;
-	private BigDecimal valorCliente;
+    private BigDecimal idServicio;
+    private Departmentos departmentos;
+    private TiposServicio tiposServicio;
+    private String descripcion;
+    private BigDecimal costoOperacion;
+    private BigDecimal valorCliente;
 
-	public Servicios() {
-	}
+    public Servicios() {
+    }
 
-	public Servicios(BigDecimal idServicio, Departmentos departmentos, TiposServicio tiposServicio) {
-		this.idServicio = idServicio;
-		this.departmentos = departmentos;
-		this.tiposServicio = tiposServicio;
-	}
+    public Servicios(BigDecimal idServicio, Departmentos departmentos, TiposServicio tiposServicio) {
+        this.idServicio = idServicio;
+        this.departmentos = departmentos;
+        this.tiposServicio = tiposServicio;
+    }
 
-	public Servicios(BigDecimal idServicio, Departmentos departmentos, TiposServicio tiposServicio, String descripcion,
-			BigDecimal costoOperacion, BigDecimal valorCliente) {
-		this.idServicio = idServicio;
-		this.departmentos = departmentos;
-		this.tiposServicio = tiposServicio;
-		this.descripcion = descripcion;
-		this.costoOperacion = costoOperacion;
-		this.valorCliente = valorCliente;
-	}
+    public Servicios(BigDecimal idServicio, Departmentos departmentos, TiposServicio tiposServicio, String descripcion,
+            BigDecimal costoOperacion, BigDecimal valorCliente) {
+        this.idServicio = idServicio;
+        this.departmentos = departmentos;
+        this.tiposServicio = tiposServicio;
+        this.descripcion = descripcion;
+        this.costoOperacion = costoOperacion;
+        this.valorCliente = valorCliente;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_SERVICIO", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdServicio() {
-		return this.idServicio;
-	}
+    @Column(name = "ID_SERVICIO", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdServicio() {
+        return this.idServicio;
+    }
 
-	public void setIdServicio(BigDecimal idServicio) {
-		this.idServicio = idServicio;
-	}
+    public void setIdServicio(BigDecimal idServicio) {
+        this.idServicio = idServicio;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DEPARTMENTOS_ID_DEPARTMENTO", nullable = false)
-	public Departmentos getDepartmentos() {
-		return this.departmentos;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "DEPARTMENTOS_ID_DEPARTMENTO", nullable = false)
+    public Departmentos getDepartmentos() {
+        return this.departmentos;
+    }
 
-	public void setDepartmentos(Departmentos departmentos) {
-		this.departmentos = departmentos;
-	}
+    public void setDepartmentos(Departmentos departmentos) {
+        this.departmentos = departmentos;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "TIPOS_SERVICIO_ID_TIPO", unique = true, nullable = false)
-	public TiposServicio getTiposServicio() {
-		return this.tiposServicio;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TIPOS_SERVICIO_ID_TIPO", unique = true, nullable = false)
+    public TiposServicio getTiposServicio() {
+        return this.tiposServicio;
+    }
 
-	public void setTiposServicio(TiposServicio tiposServicio) {
-		this.tiposServicio = tiposServicio;
-	}
+    public void setTiposServicio(TiposServicio tiposServicio) {
+        this.tiposServicio = tiposServicio;
+    }
 
-	@Column(name = "DESCRIPCION", length = 250)
-	public String getDescripcion() {
-		return this.descripcion;
-	}
+    @Column(name = "DESCRIPCION", length = 250)
+    public String getDescripcion() {
+        return this.descripcion;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	@Column(name = "COSTO_OPERACION", precision = 22, scale = 0)
-	public BigDecimal getCostoOperacion() {
-		return this.costoOperacion;
-	}
+    @Column(name = "COSTO_OPERACION", precision = 22, scale = 0)
+    public BigDecimal getCostoOperacion() {
+        return this.costoOperacion;
+    }
 
-	public void setCostoOperacion(BigDecimal costoOperacion) {
-		this.costoOperacion = costoOperacion;
-	}
+    public void setCostoOperacion(BigDecimal costoOperacion) {
+        this.costoOperacion = costoOperacion;
+    }
 
-	@Column(name = "VALOR_CLIENTE", precision = 22, scale = 0)
-	public BigDecimal getValorCliente() {
-		return this.valorCliente;
-	}
+    @Column(name = "VALOR_CLIENTE", precision = 22, scale = 0)
+    public BigDecimal getValorCliente() {
+        return this.valorCliente;
+    }
 
-	public void setValorCliente(BigDecimal valorCliente) {
-		this.valorCliente = valorCliente;
-	}
+    public void setValorCliente(BigDecimal valorCliente) {
+        this.valorCliente = valorCliente;
+    }
 
 }

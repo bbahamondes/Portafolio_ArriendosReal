@@ -20,62 +20,62 @@ import javax.persistence.TemporalType;
 @Table(name = "CHECKIN")
 public class Checkin implements java.io.Serializable {
 
-	private BigDecimal idCheckin;
-	private Date fecha;
-	private BigDecimal pago;
-	private Set<Estadias> estadiases = new HashSet<Estadias>(0);
+    private BigDecimal idCheckin;
+    private Date fecha;
+    private BigDecimal pago;
+    private Set<Estadias> estadiases = new HashSet<Estadias>(0);
 
-	public Checkin() {
-	}
+    public Checkin() {
+    }
 
-	public Checkin(BigDecimal idCheckin) {
-		this.idCheckin = idCheckin;
-	}
+    public Checkin(BigDecimal idCheckin) {
+        this.idCheckin = idCheckin;
+    }
 
-	public Checkin(BigDecimal idCheckin, Date fecha, BigDecimal pago, Set<Estadias> estadiases) {
-		this.idCheckin = idCheckin;
-		this.fecha = fecha;
-		this.pago = pago;
-		this.estadiases = estadiases;
-	}
+    public Checkin(BigDecimal idCheckin, Date fecha, BigDecimal pago, Set<Estadias> estadiases) {
+        this.idCheckin = idCheckin;
+        this.fecha = fecha;
+        this.pago = pago;
+        this.estadiases = estadiases;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_CHECKIN", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdCheckin() {
-		return this.idCheckin;
-	}
+    @Column(name = "ID_CHECKIN", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdCheckin() {
+        return this.idCheckin;
+    }
 
-	public void setIdCheckin(BigDecimal idCheckin) {
-		this.idCheckin = idCheckin;
-	}
+    public void setIdCheckin(BigDecimal idCheckin) {
+        this.idCheckin = idCheckin;
+    }
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "FECHA", length = 7)
-	public Date getFecha() {
-		return this.fecha;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA", length = 7)
+    public Date getFecha() {
+        return this.fecha;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
-	@Column(name = "PAGO", precision = 22, scale = 0)
-	public BigDecimal getPago() {
-		return this.pago;
-	}
+    @Column(name = "PAGO", precision = 22, scale = 0)
+    public BigDecimal getPago() {
+        return this.pago;
+    }
 
-	public void setPago(BigDecimal pago) {
-		this.pago = pago;
-	}
+    public void setPago(BigDecimal pago) {
+        this.pago = pago;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "checkin")
-	public Set<Estadias> getEstadiases() {
-		return this.estadiases;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "checkin")
+    public Set<Estadias> getEstadiases() {
+        return this.estadiases;
+    }
 
-	public void setEstadiases(Set<Estadias> estadiases) {
-		this.estadiases = estadiases;
-	}
+    public void setEstadiases(Set<Estadias> estadiases) {
+        this.estadiases = estadiases;
+    }
 
 }

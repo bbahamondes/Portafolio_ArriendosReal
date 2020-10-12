@@ -18,68 +18,68 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "ESTADIAS", uniqueConstraints = { @UniqueConstraint(columnNames = "CHECKIN_ID_CHECKIN"),
-		@UniqueConstraint(columnNames = "CHECKOUT_ID_CHECKOUT") })
+        @UniqueConstraint(columnNames = "CHECKOUT_ID_CHECKOUT") })
 public class Estadias implements java.io.Serializable {
 
-	private BigDecimal idEstadia;
-	private Checkin checkin;
-	private Checkout checkout;
-	private Set<Reservas> reservases = new HashSet<Reservas>(0);
+    private BigDecimal idEstadia;
+    private Checkin checkin;
+    private Checkout checkout;
+    private Set<Reservas> reservases = new HashSet<Reservas>(0);
 
-	public Estadias() {
-	}
+    public Estadias() {
+    }
 
-	public Estadias(BigDecimal idEstadia, Checkin checkin, Checkout checkout) {
-		this.idEstadia = idEstadia;
-		this.checkin = checkin;
-		this.checkout = checkout;
-	}
+    public Estadias(BigDecimal idEstadia, Checkin checkin, Checkout checkout) {
+        this.idEstadia = idEstadia;
+        this.checkin = checkin;
+        this.checkout = checkout;
+    }
 
-	public Estadias(BigDecimal idEstadia, Checkin checkin, Checkout checkout, Set<Reservas> reservases) {
-		this.idEstadia = idEstadia;
-		this.checkin = checkin;
-		this.checkout = checkout;
-		this.reservases = reservases;
-	}
+    public Estadias(BigDecimal idEstadia, Checkin checkin, Checkout checkout, Set<Reservas> reservases) {
+        this.idEstadia = idEstadia;
+        this.checkin = checkin;
+        this.checkout = checkout;
+        this.reservases = reservases;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_ESTADIA", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdEstadia() {
-		return this.idEstadia;
-	}
+    @Column(name = "ID_ESTADIA", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdEstadia() {
+        return this.idEstadia;
+    }
 
-	public void setIdEstadia(BigDecimal idEstadia) {
-		this.idEstadia = idEstadia;
-	}
+    public void setIdEstadia(BigDecimal idEstadia) {
+        this.idEstadia = idEstadia;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CHECKIN_ID_CHECKIN", unique = true, nullable = false)
-	public Checkin getCheckin() {
-		return this.checkin;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CHECKIN_ID_CHECKIN", unique = true, nullable = false)
+    public Checkin getCheckin() {
+        return this.checkin;
+    }
 
-	public void setCheckin(Checkin checkin) {
-		this.checkin = checkin;
-	}
+    public void setCheckin(Checkin checkin) {
+        this.checkin = checkin;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CHECKOUT_ID_CHECKOUT", unique = true, nullable = false)
-	public Checkout getCheckout() {
-		return this.checkout;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CHECKOUT_ID_CHECKOUT", unique = true, nullable = false)
+    public Checkout getCheckout() {
+        return this.checkout;
+    }
 
-	public void setCheckout(Checkout checkout) {
-		this.checkout = checkout;
-	}
+    public void setCheckout(Checkout checkout) {
+        this.checkout = checkout;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "estadias")
-	public Set<Reservas> getReservases() {
-		return this.reservases;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "estadias")
+    public Set<Reservas> getReservases() {
+        return this.reservases;
+    }
 
-	public void setReservases(Set<Reservas> reservases) {
-		this.reservases = reservases;
-	}
+    public void setReservases(Set<Reservas> reservases) {
+        this.reservases = reservases;
+    }
 
 }

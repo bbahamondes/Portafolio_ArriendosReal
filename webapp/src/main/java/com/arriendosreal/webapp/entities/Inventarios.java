@@ -16,52 +16,52 @@ import javax.persistence.Table;
 @Table(name = "INVENTARIOS")
 public class Inventarios implements java.io.Serializable {
 
-	private BigDecimal idInventario;
-	private Departmentos departmentos;
-	private String descripcion;
+    private BigDecimal idInventario;
+    private Departmentos departmentos;
+    private String descripcion;
 
-	public Inventarios() {
-	}
+    public Inventarios() {
+    }
 
-	public Inventarios(BigDecimal idInventario, Departmentos departmentos) {
-		this.idInventario = idInventario;
-		this.departmentos = departmentos;
-	}
+    public Inventarios(BigDecimal idInventario, Departmentos departmentos) {
+        this.idInventario = idInventario;
+        this.departmentos = departmentos;
+    }
 
-	public Inventarios(BigDecimal idInventario, Departmentos departmentos, String descripcion) {
-		this.idInventario = idInventario;
-		this.departmentos = departmentos;
-		this.descripcion = descripcion;
-	}
+    public Inventarios(BigDecimal idInventario, Departmentos departmentos, String descripcion) {
+        this.idInventario = idInventario;
+        this.departmentos = departmentos;
+        this.descripcion = descripcion;
+    }
 
-	@Id
+    @Id
 
-	@Column(name = "ID_INVENTARIO", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdInventario() {
-		return this.idInventario;
-	}
+    @Column(name = "ID_INVENTARIO", unique = true, nullable = false, precision = 22, scale = 0)
+    public BigDecimal getIdInventario() {
+        return this.idInventario;
+    }
 
-	public void setIdInventario(BigDecimal idInventario) {
-		this.idInventario = idInventario;
-	}
+    public void setIdInventario(BigDecimal idInventario) {
+        this.idInventario = idInventario;
+    }
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DEPARTMENTOS_ID_DEPARTMENTO", nullable = false)
-	public Departmentos getDepartmentos() {
-		return this.departmentos;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "DEPARTMENTOS_ID_DEPARTMENTO", nullable = false)
+    public Departmentos getDepartmentos() {
+        return this.departmentos;
+    }
 
-	public void setDepartmentos(Departmentos departmentos) {
-		this.departmentos = departmentos;
-	}
+    public void setDepartmentos(Departmentos departmentos) {
+        this.departmentos = departmentos;
+    }
 
-	@Column(name = "DESCRIPCION", length = 50)
-	public String getDescripcion() {
-		return this.descripcion;
-	}
+    @Column(name = "DESCRIPCION", length = 50)
+    public String getDescripcion() {
+        return this.descripcion;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
 }
