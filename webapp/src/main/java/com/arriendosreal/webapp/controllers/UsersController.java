@@ -28,7 +28,7 @@ import com.arriendosreal.webapp.entities.Profiles;
 import com.arriendosreal.webapp.repositories.ProfilesRepository;
 import com.arriendosreal.webapp.repositories.UsersRepository;
 
-@RequestMapping(value =  "/api/v1", produces = "application/json; charset=utf-8")
+@RequestMapping(value =  "/api/v1/user", produces = "application/json; charset=utf-8")
 @RestController
 public class UsersController {
 	
@@ -71,7 +71,7 @@ public class UsersController {
 
     }
 	
-	@PostMapping(value = "/user", produces = "application/json; charset=utf-8")
+	@PostMapping
 	public ResponseEntity<String> createUser(@RequestParam(name="profileId", required=true) int profileId,
 			@RequestParam(name="username", required=true) String username, 
 			@RequestParam(name="email", required=true) String email, 
@@ -97,7 +97,7 @@ public class UsersController {
 
 	}
 	
-	@GetMapping(value = "/user", produces = "application/json; charset=utf-8")
+	@GetMapping
 	public ResponseEntity<String> getUserByID(@RequestParam(name="userId", required=true) int user_id) {		
 	
 		Users user = new Users();
@@ -139,7 +139,7 @@ public class UsersController {
 
 	}
 	
-	@DeleteMapping(value = "/user", produces = "application/json; charset=utf-8")
+	@DeleteMapping
 	public ResponseEntity<String> deleteUserByID(@RequestParam(name="userId", required=true) int user_id) {
 		
 		int resultado = -1;
@@ -156,7 +156,7 @@ public class UsersController {
 		return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@PutMapping("/user")
+	@PutMapping
 	public ResponseEntity<String> updateUser(@RequestParam(name="userId", required=true) int userId,			
 			@RequestParam(name="username", required=true) String username, 
 			@RequestParam(name="email", required=true) String email, 

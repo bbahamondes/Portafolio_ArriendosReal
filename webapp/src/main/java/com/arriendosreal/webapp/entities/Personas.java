@@ -9,7 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -18,10 +21,34 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "PERSONAS", uniqueConstraints = @UniqueConstraint(columnNames = "USERS_USER_ID"))
+
+@NamedStoredProcedureQuery(name = "Personas.createPersona", 
+procedureName = "SP_CREAR_PERSONA", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellidos", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_telefono", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Users_user_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "Personas.updatePersona", 
+procedureName = "SP_UPD_PERSONA", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_persona", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellidos", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_telefono", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "Personas.deletePersona",
+procedureName = "SP_DEL_PERSONA", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_persona", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)})
+
 public class Personas implements java.io.Serializable {
 
-	private BigDecimal idPersona;
-	private Users users;
+	private int idPersona;
+	private int users;
 	private String rut;
 	private String nombre;
 	private String apellidos;
@@ -31,13 +58,13 @@ public class Personas implements java.io.Serializable {
 	public Personas() {
 	}
 
-	public Personas(BigDecimal idPersona, Users users, String rut) {
+	public Personas(int idPersona, int users, String rut) {
 		this.idPersona = idPersona;
 		this.users = users;
 		this.rut = rut;
 	}
 
-	public Personas(BigDecimal idPersona, Users users, String rut, String nombre, String apellidos, String telefono,
+	public Personas(int idPersona, int users, String rut, String nombre, String apellidos, String telefono,
 			Set<Reservas> reservases) {
 		this.idPersona = idPersona;
 		this.users = users;
@@ -51,21 +78,22 @@ public class Personas implements java.io.Serializable {
 	@Id
 
 	@Column(name = "ID_PERSONA", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getIdPersona() {
+	public int getIdPersona() {
 		return this.idPersona;
 	}
 
-	public void setIdPersona(BigDecimal idPersona) {
+	public void setIdPersona(int idPersona) {
 		this.idPersona = idPersona;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USERS_USER_ID", unique = true, nullable = false)
-	public Users getUsers() {
+	//@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "USERS_USER_ID", unique = true, nullable = false)
+	@Column(name = "USERS_USER_ID")
+	public int getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(Users users) {
+	public void setUsers(int users) {
 		this.users = users;
 	}
 
