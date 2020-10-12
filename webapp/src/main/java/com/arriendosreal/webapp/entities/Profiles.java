@@ -17,18 +17,18 @@ import javax.persistence.Table;
 @Table(name = "PROFILES")
 public class Profiles implements java.io.Serializable {
 
-	private BigDecimal profileId;
+	private int profileId;
 	private String profileName;
 	private Set<Users> userses = new HashSet<Users>(0);
 
 	public Profiles() {
 	}
 
-	public Profiles(BigDecimal profileId) {
+	public Profiles(int profileId) {
 		this.profileId = profileId;
 	}
 
-	public Profiles(BigDecimal profileId, String profileName, Set<Users> userses) {
+	public Profiles(int profileId, String profileName, Set<Users> userses) {
 		this.profileId = profileId;
 		this.profileName = profileName;
 		this.userses = userses;
@@ -37,11 +37,11 @@ public class Profiles implements java.io.Serializable {
 	@Id
 
 	@Column(name = "PROFILE_ID", unique = true, nullable = false, precision = 22, scale = 0)
-	public BigDecimal getProfileId() {
+	public int getProfileId() {
 		return this.profileId;
 	}
 
-	public void setProfileId(BigDecimal profileId) {
+	public void setProfileId(int profileId) {
 		this.profileId = profileId;
 	}
 

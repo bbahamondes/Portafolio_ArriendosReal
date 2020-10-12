@@ -8,5 +8,5 @@ import com.arriendosreal.webapp.entities.Profiles;
 
 public interface ProfilesRepository extends JpaRepository <Profiles, String> {
 	
-	Optional<Profiles> findByProfileId(BigDecimal profileId);
+	Optional<Profiles> findByProfileId(int profileId);
 }

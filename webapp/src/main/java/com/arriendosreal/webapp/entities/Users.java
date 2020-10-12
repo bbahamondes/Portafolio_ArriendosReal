@@ -28,16 +28,31 @@ procedureName = "SP_CREAR_USERS", parameters = {
   @StoredProcedureParameter(mode = ParameterMode.IN, name = "profile_id", type = Integer.class),
   @StoredProcedureParameter(mode = ParameterMode.OUT, name = "resultado", type = Integer.class)})
 
+@NamedStoredProcedureQuery(name = "Users.updateUser", 
+procedureName = "SP_UPD_USERS", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_user_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_username", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_email", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_password", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
 @NamedStoredProcedureQuery(name = "Users.getUserById",
 procedureName = "SP_GET_USERS", resultClasses= String.class, parameters = {
   @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class),
   @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = void.class)
 })
 
+@NamedStoredProcedureQuery(name = "Users.deleteUser",
+procedureName = "SP_DEL_USERS", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "user_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "estado", type = Integer.class)
+})
+
 public class Users implements java.io.Serializable {
 
 	private int userId;
-	private Profiles profiles;
+	private int Profiles_Profile_Id;
 	private String username;
 	private String email;
 	private String password;
@@ -46,18 +61,18 @@ public class Users implements java.io.Serializable {
 	public Users() {
 	}
 
-	public Users(int userId, Profiles profiles, String username, String email, String password) {
+	public Users(int userId, int profiles, String username, String email, String password) {
 		this.userId = userId;
-		this.profiles = profiles;
+		this.Profiles_Profile_Id = profiles;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
 
-	public Users(int userId, Profiles profiles, String username, String email, String password,
+	public Users(int userId, int profiles, String username, String email, String password,
 			Set<Personas> personases) {
 		this.userId = userId;
-		this.profiles = profiles;
+		this.Profiles_Profile_Id = profiles;
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -75,14 +90,13 @@ public class Users implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PROFILES_PROFILE_ID", nullable = false)
-	public Profiles getProfiles() {
-		return this.profiles;
+	@Column(name = "PROFILES_PROFILE_ID")
+	public int getProfiles() {
+		return this.Profiles_Profile_Id;
 	}
 
-	public void setProfiles(Profiles profiles) {
-		this.profiles = profiles;
+	public void setProfiles(int profiles) {
+		this.Profiles_Profile_Id = profiles;
 	}
 
 	@Column(name = "USERNAME", nullable = false, length = 50)

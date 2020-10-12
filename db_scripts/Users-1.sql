@@ -101,4 +101,4 @@ insert into Users (username, email, password, Profiles_profile_id) values ('dgoo
 insert into Users (username, email, password, Profiles_profile_id) values ('cpenning2o', 'ooluby2o@facebook.com', 'J9C6CuxOLzR', 3);
 insert into Users (username, email, password, Profiles_profile_id) values ('wsabater2p', 'cmicheli2p@slate.com', 'vuMQ6aDdZVvz', 3);
 insert into Users (username, email, password, Profiles_profile_id) values ('wmccorrie2q', 'cmcglashan2q@latimes.com', 'n5VfB27gR', 3);
-insert into Users (username, email, password, Profiles_profile_id) values ('iduro2r', 'afeechan2r@dailymotion.com', 'iSYE3GNO1gI7', 3
+insert into Users (username, email, password, Profiles_profile_id) values ('iduro2r', 'afeechan2r@dailymotion.com', 'iSYE3GNO1gI7', 3);
