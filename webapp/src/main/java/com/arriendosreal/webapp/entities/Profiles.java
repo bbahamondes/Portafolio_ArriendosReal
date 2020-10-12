@@ -7,7 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +18,23 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "PROFILES")
+
+@NamedStoredProcedureQuery(name = "Profiles.createProfile", 
+procedureName = "SP_CREAR_PROFILES", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_name", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "Profiles.deleteProfile", 
+procedureName = "SP_DEL_PROFILES", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "Profiles.updateProfile", 
+procedureName = "SP_UPD_PROFILES", parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_name", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
 public class Profiles implements java.io.Serializable {
 
 	private int profileId;

@@ -22,11 +22,11 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 @NamedStoredProcedureQuery(name = "Users.createUser", 
 procedureName = "SP_CREAR_USERS", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "username", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "email", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "password", type = String.class),
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "profile_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "resultado", type = Integer.class)})
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_username", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_email", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_password", type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
 
 @NamedStoredProcedureQuery(name = "Users.updateUser", 
 procedureName = "SP_UPD_USERS", parameters = {
@@ -45,8 +45,8 @@ procedureName = "SP_GET_USERS", resultClasses= String.class, parameters = {
 
 @NamedStoredProcedureQuery(name = "Users.deleteUser",
 procedureName = "SP_DEL_USERS", parameters = {
-  @StoredProcedureParameter(mode = ParameterMode.IN, name = "user_id", type = Integer.class),
-  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "estado", type = Integer.class)
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_user_id", type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)
 })
 
 public class Users implements java.io.Serializable {

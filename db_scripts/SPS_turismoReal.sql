@@ -36,7 +36,7 @@ CREATE OR REPLACE PROCEDURE SP_UPD_USERS (
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    UPDATE Users SET username=in_username,email=in_email,password=in_password,PROFILES_PROFILE_ID=in_profile_id WHERE user_id = user_id;
+    UPDATE Users SET username=in_username,email=in_email,password=in_password,PROFILES_PROFILE_ID=in_profile_id WHERE user_id = in_user_id;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado :=-1;

@@ -175,7 +175,7 @@ public class UsersController {
 					+ "\"username\": \"%s\", "
 					+ " \"email\": \"%s\", "
 					+ "\"profile\": \"%s\"}";
-			json = String.format(json, resultado, username, email, profileId );
+			json = String.format(json, userId, username, email, profileId );
 			return new ResponseEntity<>(json, HttpStatus.OK	);
 		} else {
 			return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
