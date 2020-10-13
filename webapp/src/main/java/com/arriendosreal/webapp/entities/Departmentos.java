@@ -62,6 +62,17 @@ public class Departmentos implements java.io.Serializable {
         this.idDepartmento = idDepartmento;
         this.nombre = nombre;
     }
+    
+    public Departmentos(BigDecimal idDepartmento, String nombre, String direccion, String region, String ciudad,
+            BigDecimal precio, BigDecimal disponibilidad) {
+        this.idDepartmento = idDepartmento;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.region = region;
+        this.ciudad = ciudad;
+        this.precio = precio;
+        this.disponibilidad = disponibilidad;
+    }
 
     public Departmentos(BigDecimal idDepartmento, String nombre, String direccion, String region, String ciudad,
             BigDecimal precio, BigDecimal disponibilidad, Set<Mantenciones> mantencioneses, Set<Reservas> reservases,

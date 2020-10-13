@@ -7,7 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +18,20 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TIPOS_SERVICIO")
+
+@NamedStoredProcedureQuery(name = "TiposServicio.createTipoServicio", procedureName = "SP_CREAR_TIPO_SERVICIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "TiposServicio.updateTipoServicio", procedureName = "SP_UPD_TIPO_SERVICIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_tipo", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "TiposServicio.deleteTipoServicio", procedureName = "SP_DEL_TIPO_SERVICIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_tipo", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "out_estado", type = Integer.class)})
+
 public class TiposServicio implements java.io.Serializable {
 
     private BigDecimal idTipo;

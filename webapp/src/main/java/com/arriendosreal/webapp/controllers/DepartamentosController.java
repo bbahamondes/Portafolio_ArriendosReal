@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.google.gson.Gson;
 
 import com.arriendosreal.webapp.entities.Departmentos;
 import com.arriendosreal.webapp.repositories.DepartamentosRepository;
+import java.math.BigDecimal;
 
 @RequestMapping(value = "/api/v1/departamento", produces = "application/json; charset=utf-8")
 @RestController
@@ -37,6 +39,8 @@ public class DepartamentosController {
     private JdbcTemplate jdbcTemplate;
 
     private SimpleJdbcCall simpleJdbcCallRefCursor;
+    
+    private Gson gson = new Gson();
 
     @PostConstruct
     public void init() {
@@ -72,23 +76,17 @@ public class DepartamentosController {
             @RequestParam(name = "disponibilidad", required = true) boolean disponibilidad) {
 
         int resultado = 0;
-        try {
-            int test = disponibilidad ? 1 : 0;
-            resultado = departmentoRepo.createDepartamento(nombre, direccion, region, ciudad, precio, test);
+        try {            
+            resultado = departmentoRepo.createDepartamento(nombre, direccion, region, ciudad, precio, disponibilidad ? 1 : 0);
         } catch (Exception e) {
-            throw e;
-            //System.out.println(e.toString());
+            return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         if (resultado > 0) {
-            String json = "{\"departamentoId\": \"%s\", "
-                    + "\"nombre\": \"%s\", " 
-                    + " \"direccion\": \"%s\", "
-                    + " \"region\": \"%s\", "
-                    + " \"ciudad\": \"%s\", "
-                    + " \"precio\": %s, "
-                    + "\"disponibilidad\": \"%s\"}";
-            json = String.format(json, resultado, nombre, direccion, region, ciudad, precio, disponibilidad);
+            Departmentos depto = new Departmentos(BigDecimal.valueOf(resultado), nombre, direccion, region, ciudad,
+                    BigDecimal.valueOf(precio), 
+                    BigDecimal.valueOf(disponibilidad ? 1 : 0));
+            String json = gson.toJson(depto);
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -105,20 +103,11 @@ public class DepartamentosController {
             deps = findDeptoById(departamentoId);
             dep = deps.get(0);
         } catch (Exception e) {
-            dep = null;
-            System.out.println(e.toString());
+            return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        if (dep != null) {            
-            String json = "{\"departamentoId\": \"%s\", "
-                    + "\"nombre\": \"%s\", " 
-                    + " \"direccion\": \"%s\", "
-                    + " \"region\": \"%s\", "
-                    + " \"ciudad\": \"%s\", "
-                    + " \"precio\": %s, "
-                    + "\"disponibilidad\": \"%s\"}";
-            json = String.format(json, dep.getIdDepartmento(), dep.getNombre(), dep.getDireccion(),
-                    dep.getRegion(), dep.getCiudad(), dep.getPrecio(), dep.getDisponibilidad());
+        if (dep != null) {
+            String json = gson.toJson(dep);
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Depto Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -128,7 +117,6 @@ public class DepartamentosController {
 
     @DeleteMapping
     public ResponseEntity<String> deleteDeptoByID(@RequestParam(name = "departamentoId", required = true) int departamentoId) {
-
         int resultado = -1;
         try {
             resultado = departmentoRepo.deleteDepartamento(departamentoId);
@@ -160,14 +148,10 @@ public class DepartamentosController {
         }
 
         if (resultado >= 0) {
-            String json = "{\"departamentoId\": \"%s\", "
-                    + "\"nombre\": \"%s\", " 
-                    + " \"direccion\": \"%s\", "
-                    + " \"region\": \"%s\", "
-                    + " \"ciudad\": \"%s\", "
-                    + " \"precio\": %s, "
-                    + "\"disponibilidad\": \"%s\"}";
-            json = String.format(json, departamentoId, nombre, direccion, region, ciudad, precio, disponibilidad);
+            Departmentos depto = new Departmentos(BigDecimal.valueOf(departamentoId), nombre, direccion, region, ciudad, 
+                    BigDecimal.valueOf(precio), 
+                    BigDecimal.valueOf(disponibilidad ? 1 : 0));
+            String json = gson.toJson(depto);
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
