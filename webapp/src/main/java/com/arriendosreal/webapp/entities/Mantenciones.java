@@ -8,6 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,6 +20,29 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "MANTENCIONES")
+
+@NamedStoredProcedureQuery(name = "Mantenciones.createMantencion", procedureName = "SP_CREAR_MANTENCIONES", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_inicio", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_costo", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_idDepartamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_termino", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Mantenciones.updateMantencion", procedureName = "SP_UPD_MANTENCIONES", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_mantencion", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_inicio", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_costo", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_idDepartamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_termino", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Mantenciones.deleteMantencion", procedureName = "SP_DEL_MANTENCIONES", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_mantencion", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
+
 public class Mantenciones implements java.io.Serializable {
 
     private BigDecimal idMantencion;

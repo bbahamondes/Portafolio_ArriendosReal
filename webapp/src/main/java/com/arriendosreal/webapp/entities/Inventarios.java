@@ -7,6 +7,9 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 /**
@@ -14,6 +17,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "INVENTARIOS")
+
+@NamedStoredProcedureQuery(name = "Inventarios.createInventario", procedureName = "SP_CREAR_INVENTARIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Inventarios.updateInventario", procedureName = "SP_UPD_INVENTARIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_inventario", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Inventarios.deleteInventario", procedureName = "SP_DEL_INVENTARIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_inventario", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
 public class Inventarios implements java.io.Serializable {
 
     private BigDecimal idInventario;
