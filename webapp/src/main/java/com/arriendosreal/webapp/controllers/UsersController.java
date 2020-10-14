@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+
 import com.arriendosreal.webapp.entities.Users;
 import com.arriendosreal.webapp.entities.Profiles;
 import com.arriendosreal.webapp.repositories.ProfilesRepository;
@@ -39,6 +41,8 @@ public class UsersController {
     private JdbcTemplate jdbcTemplate;
 
     private SimpleJdbcCall simpleJdbcCallRefCursor;
+    
+    private Gson gson;
 
     @Autowired
     private ProfilesRepository profileRepo;
@@ -82,10 +86,12 @@ public class UsersController {
         }
 
         if (resultado > 0) {
+            Users user = new Users(resultado, profileId, username, email, password);
+            String json2 = gson.toJson(user); 
             String json = "{\"userId\": \"%s\", " + "\"username\": \"%s\", " + " \"email\": \"%s\", "
                     + "\"profile\": \"%s\"}";
             json = String.format(json, resultado, username, email, profileId);
-            return new ResponseEntity<>(json, HttpStatus.OK);
+            return new ResponseEntity<>(json2, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }

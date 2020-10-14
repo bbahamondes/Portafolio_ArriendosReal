@@ -30,7 +30,7 @@ import javax.persistence.Table;
 
 @NamedStoredProcedureQuery(name = "TiposServicio.deleteTipoServicio", procedureName = "SP_DEL_TIPO_SERVICIO", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_tipo", type = Integer.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "out_estado", type = Integer.class)})
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)})
 
 public class TiposServicio implements java.io.Serializable {
 
@@ -43,6 +43,11 @@ public class TiposServicio implements java.io.Serializable {
 
     public TiposServicio(BigDecimal idTipo) {
         this.idTipo = idTipo;
+    }
+    
+    public TiposServicio(BigDecimal idTipo, String descripcion) {
+        this.idTipo = idTipo;
+        this.descripcion = descripcion;
     }
 
     public TiposServicio(BigDecimal idTipo, String descripcion, Set<Servicios> servicioses) {

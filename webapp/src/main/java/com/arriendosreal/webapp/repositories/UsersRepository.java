@@ -14,7 +14,7 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
 
     Optional<Users> findByUserId(int userId);
 
-    @Procedure(procedureName = "Users.createUser")
+    @Procedure(name = "Users.createUser")
     int createUser(@Param("in_username") String username, @Param("in_email") String email,
             @Param("in_password") String password, @Param("in_profile_id") int profile_id);
 

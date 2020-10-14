@@ -27,6 +27,7 @@ import com.arriendosreal.webapp.entities.Personas;
 import com.arriendosreal.webapp.entities.Users;
 import com.arriendosreal.webapp.repositories.PersonasRepository;
 import com.arriendosreal.webapp.repositories.UsersRepository;
+import com.google.gson.Gson;
 
 @RequestMapping(value = "/api/v1/persona", produces = "application/json; charset=utf-8")
 @RestController
@@ -42,6 +43,8 @@ public class PersonasController {
     private JdbcTemplate jdbcTemplate;
 
     private SimpleJdbcCall simpleJdbcCallRefCursor;
+    
+    private Gson gson = new Gson();
 
     @PostConstruct
     public void init() {
@@ -83,9 +86,8 @@ public class PersonasController {
         }
 
         if (resultado > 0) {
-            String json = "{\"personaId\": %s, " + "\"rut\": \"%s\", " + " \"nombre\": \"%s\", "
-                    + " \"apellidos\": \"%s\", " + " \"telefono\": \"%s\", " + " \"userId\": %s \"}";
-            json = String.format(json, resultado, rut, nombre, apellidos, telefono, userId);
+            Personas persona = new Personas(resultado, userId, rut, nombre, apellidos, telefono, null);            
+            String json = gson.toJson(persona);
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);

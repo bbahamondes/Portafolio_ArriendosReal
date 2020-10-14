@@ -1,8 +1,10 @@
 package com.arriendosreal.webapp.controllers;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.google.gson.Gson;
 import com.arriendosreal.webapp.entities.TiposServicio;
 import com.arriendosreal.webapp.repositories.TiposServicioRepository;
 
@@ -38,6 +40,8 @@ public class TiposServicioController {
     private JdbcTemplate jdbcTemplate;
 
     private SimpleJdbcCall simpleJdbcCallRefCursor;
+    
+    private Gson gson = new Gson();
 
     @PostConstruct
     public void init() {
@@ -46,7 +50,7 @@ public class TiposServicioController {
 
         // Convert o_c_book SYS_REFCURSOR to List<Book>
         simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_TIPO_SERVICIO")
-                .returningResultSet("out_departamento", BeanPropertyRowMapper.newInstance(TiposServicio.class));
+                .returningResultSet("out_tipo_servicio", BeanPropertyRowMapper.newInstance(TiposServicio.class));
 
     }
 
@@ -71,15 +75,17 @@ public class TiposServicioController {
         try {
             resultado = tipoServicioRepo.createTipoServicio(descripcion);
         } catch (Exception e) {
-            throw e;
-            //System.out.println(e.toString());
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         if (resultado > 0) {
-            String json = "{\"tipoServicioId\": \"%s\", "
-                    + "\"descripcion\": \"%s\" }";
-            json = String.format(json, resultado, descripcion);
-            return new ResponseEntity<>(json, HttpStatus.OK);
+            try {
+                TiposServicio tipo = new TiposServicio(BigDecimal.valueOf(resultado), descripcion);
+                String json = gson.toJson(tipo);                
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -87,25 +93,67 @@ public class TiposServicioController {
     }
 
     @GetMapping
-    public ResponseEntity<String> getDepartamentoByID(@RequestParam(name = "departamentoId", required = true) int departamentoId) {
-        return new ResponseEntity<>("Depto Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<String> getTipoServicioByID(@RequestParam(name = "tipoServicioId", required = true) int tipoServicioId) {
+        TiposServicio tipo = new TiposServicio();
+        List<TiposServicio> tipos = new ArrayList<TiposServicio>();
+        try {
+            tipos = findTipoServicioById(tipoServicioId);
+            tipo = tipos.get(0);
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (tipo != null) {
+            try {
+                String json = gson.toJson(tipo);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping
-    public ResponseEntity<String> deleteDeptoByID(@RequestParam(name = "departamentoId", required = true) int departamentoId) {
-        return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<String> deleteTipoServicioByID(@RequestParam(name = "tipoServicioId", required = true) int tipoServicioId) {
+        int resultado = -1;
+        try {
+            resultado = tipoServicioRepo.deleteTipoServicio(tipoServicioId);
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (resultado != -1) {
+            HashMap<String, String> respuesta = new HashMap<String, String>();
+            respuesta.put("tipoServicioId", String.valueOf(tipoServicioId));
+            respuesta.put("resultado", String.valueOf(resultado));
+            String json = gson.toJson(respuesta);
+            return new ResponseEntity<>(json, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);        
     }
 
     @PutMapping
-    public ResponseEntity<String> updateDepartamento(@RequestParam(name = "departamentoId", required = true) int departamentoId,
-            @RequestParam(name = "nombre", required = true) String nombre,
-            @RequestParam(name = "direccion", required = true) String direccion,
-            @RequestParam(name = "region", required = true) String region,
-            @RequestParam(name = "ciudad", required = true) String ciudad,
-            @RequestParam(name = "precio", required = true) int precio,
-            @RequestParam(name = "disponibilidad", required = true) boolean disponibilidad) {
+    public ResponseEntity<String> updateTipoServicio(@RequestParam(name = "tipoServicioId", required = true) int tipoServicioId,
+            @RequestParam(name = "descripcion", required = true) String descripcion) {
+        
+        int resultado = -1;
+        TiposServicio tipo = new TiposServicio();
+        try {
+            resultado = tipoServicioRepo.updateTipoServicio(tipoServicioId, descripcion);
+            tipo = new TiposServicio(BigDecimal.valueOf(tipoServicioId), descripcion);
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-        return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+        if (resultado >= 0) {
+            String json = gson.toJson(tipo);
+            return new ResponseEntity<>(json, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
 }
