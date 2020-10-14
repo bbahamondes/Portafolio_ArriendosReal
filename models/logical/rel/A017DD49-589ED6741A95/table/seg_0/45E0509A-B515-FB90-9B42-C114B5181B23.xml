@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="45E0509A-B515-FB90-9B42-C114B5181B23" name="CheckIn">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>65A6ADD3-7426-D39C-32EF-1CEE4162A85E</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_checkin" id="5FF72F38-F3B6-D4CE-3DFD-A1834FFA35DD">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>34BAF6C4-03FD-4DCA-071B-55AEC43F6C66</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha" id="7CD20E38-7F89-9C45-A51E-AD558D11AB12">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>A8290470-590F-C3BB-7F8A-4CBCD84D5439</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pago" id="B8114B19-DB26-3E1D-AA5F-1EB7291E2C86">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>599E5004-5D44-83ED-D909-D245F0E034F5</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7DC776BB-79BE-41D4-33A2-06532BACD497" name="CheckIn_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>AD781F1D-3035-DE94-9FBF-6B09F21E20BA</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5FF72F38-F3B6-D4CE-3DFD-A1834FFA35DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

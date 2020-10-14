@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D85FDBC4-FE84-F503-3ED4-9C82B85747B2" name="Inventarios">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>F137CC8F-D7ED-0A5D-99C5-E6C33265610D</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_inventario" id="EE84EE16-7F87-D5E0-87FD-0A41957FD1CA">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>49B71E33-B556-636F-D9E1-B7C09D0DA1C8</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="2ED4EA16-79D4-C405-EC7C-4D94F9A29B7E">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>2D8281C7-65A3-AF58-5AD2-CF590B3D464D</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Departmentos_id_departmento" id="A66E9648-DAD9-8ABA-7E70-8C5AEEC8EDDF">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>72DD5F0D-6202-A611-988E-B9A9C7BE4504</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C9D7E8F3-D769-84B1-1A59-7D1DEC6A8D51" referredColumn="09CF403D-727B-7325-97F3-27E339B1FEED"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2D8B15CF-4D03-0644-E98D-F341B307C633" name="Inventarios_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>3F1DFA18-6753-4919-6DEA-9A518E31F14C</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE84EE16-7F87-D5E0-87FD-0A41957FD1CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EB5B3CFF-2127-9A5C-1539-BCEB41B638C8" name="Inventarios_Departmentos_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>1CF10837-1D5B-0AF0-51E4-AD848E07AE38</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A66E9648-DAD9-8ABA-7E70-8C5AEEC8EDDF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FAD21B6A-A7C1-88BD-9597-B6A095BA7514" name="Personas">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>436CEC62-914F-CEA4-88C4-74171ACF6B59</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_persona" id="38D75CF3-D8D9-3FF7-EC4F-636AE871EE31">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>CBA1A861-504D-E94B-4245-171CAF39D039</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut" id="A6E54E8E-EF5B-FCA7-0163-26E77AEBDBDD">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>07D00A5B-FCF5-521B-9B49-E2D28C486DC1</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="16FC0C2F-B29B-F6F3-18B8-6ADDE12581EA">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>58468CE7-38E1-9AA3-BC5F-F562353DD72E</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellidos" id="9415853D-DC62-E8A8-CB5D-73DBF9F167E4">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>1249BCEF-D833-E032-21D7-8D1496FA129C</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="FBAB000C-2AC1-73B9-4FAB-A271A0A8236B">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>B3465FFC-ACB4-EC65-FFF1-EAF6B359A4AC</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_user_id" id="9376ADDE-DFE7-9F4F-8B9A-977B8D483E96">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>44256EEC-FF57-4C6F-E7CF-F4395E4A6078</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B17E4970-E44C-12AC-444C-82E437E4570B" referredColumn="982E78F0-2225-34C5-5E56-AE3763B97F5A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="223DB0EE-B5AB-C7B1-357B-70B0ED1FC299" name="Personas_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>8C8014AD-04AD-9C46-2CFA-F929D6DCB74A</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="38D75CF3-D8D9-3FF7-EC4F-636AE871EE31"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8400F758-0781-ACB5-A7E3-ED611D8DCFDD" name="Personas__IDX">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>F7F7184E-6C04-5488-ED75-7F32286BCA2B</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="9376ADDE-DFE7-9F4F-8B9A-977B8D483E96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5679C824-8286-D871-4BFB-523BCE1D1DCF" name="Personas_Users_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>F7F7184E-6C04-5488-ED75-7F32286BCA2B</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9376ADDE-DFE7-9F4F-8B9A-977B8D483E96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

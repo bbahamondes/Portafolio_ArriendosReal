@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="173EB16B-C0A6-212B-33AF-5D8C6FB13489" name="Multas">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>C6F4981D-6AC2-AD4C-52A4-33FA58D9DCCD</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_multas" id="DE665CC3-716A-AF41-1074-D2C402AFE7C6">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>CA7C4690-96A8-F142-9840-9200A662A468</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CheckOut_id_checkout" id="86B1913C-ADC4-4714-929E-9AB49675E5FA">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>23EB8BC3-A863-416F-A2DC-CBD00122198D</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5470E17C-9CE3-81A4-5B1D-1073AC4BB25E" referredColumn="AF71E54C-4AE2-B8A4-5B79-9237BE703FF2"/>
+</associations>
+</Column>
+<Column name="monto_multa" id="025A72CF-3EC0-531D-4C05-109CF312BE34">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>00B0A2AD-CC20-F339-7B17-BEA337C1A67B</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="92A4DF9E-B9F5-BAB4-8804-E0DBC5AD1AE4">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>1968A0C7-0E1D-27A9-08AF-97D2E0B528EA</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FC5C3A4A-7B71-52FF-A2AF-6B55C22DB239" name="Multas_PK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>433D5E13-F4F6-9A37-78EC-35677FA5CB1F</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE665CC3-716A-AF41-1074-D2C402AFE7C6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4DF2419D-4E29-9298-E79E-FB0D303B9C53" name="Multas_CheckOut_FK">
+<createdBy>Bruno</createdBy>
+<createdTime>2020-10-14 16:32:38 UTC</createdTime>
+<generatorID>90D60F73-928C-722D-E217-DBC7C2BA9248</generatorID>
+<ownerDesignName>logical</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="86B1913C-ADC4-4714-929E-9AB49675E5FA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

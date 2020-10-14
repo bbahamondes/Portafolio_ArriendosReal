@@ -7,6 +7,9 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -15,6 +18,28 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "SERVICIOS", uniqueConstraints = @UniqueConstraint(columnNames = "TIPOS_SERVICIO_ID_TIPO"))
+
+@NamedStoredProcedureQuery(name = "Servicios.createServicio", procedureName = "SP_CREAR_SERVICIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_tipos_servicio_id_tipo", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_costo_operacion", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_valor_cliente", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_departamento_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "Servicios.updateServicio", procedureName = "SP_UPD_SERVICIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_servicios", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_tipos_servicio_id_tipo", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_costo_operacion", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_valor_cliente", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_departamento_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
+
+@NamedStoredProcedureQuery(name = "Servicios.deleteServicio", procedureName = "SP_DEL_SERVICIO", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_servicios", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class)})
+
 public class Servicios implements java.io.Serializable {
 
     private BigDecimal idServicio;

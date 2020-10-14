@@ -42,7 +42,7 @@ public class UsersController {
 
     private SimpleJdbcCall simpleJdbcCallRefCursor;
     
-    private Gson gson;
+    private Gson gson = new Gson();
 
     @Autowired
     private ProfilesRepository profileRepo;

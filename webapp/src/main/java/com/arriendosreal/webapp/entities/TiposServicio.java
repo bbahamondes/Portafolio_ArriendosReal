@@ -36,7 +36,6 @@ public class TiposServicio implements java.io.Serializable {
 
     private BigDecimal idTipo;
     private String descripcion;
-    private Set<Servicios> servicioses = new HashSet<Servicios>(0);
 
     public TiposServicio() {
     }
@@ -48,12 +47,6 @@ public class TiposServicio implements java.io.Serializable {
     public TiposServicio(BigDecimal idTipo, String descripcion) {
         this.idTipo = idTipo;
         this.descripcion = descripcion;
-    }
-
-    public TiposServicio(BigDecimal idTipo, String descripcion, Set<Servicios> servicioses) {
-        this.idTipo = idTipo;
-        this.descripcion = descripcion;
-        this.servicioses = servicioses;
     }
 
     @Id
@@ -74,15 +67,6 @@ public class TiposServicio implements java.io.Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tiposServicio")
-    public Set<Servicios> getServicioses() {
-        return this.servicioses;
-    }
-
-    public void setServicioses(Set<Servicios> servicioses) {
-        this.servicioses = servicioses;
     }
 
 }

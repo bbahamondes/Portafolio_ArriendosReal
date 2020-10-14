@@ -103,7 +103,7 @@ public class DepartamentosController {
             deps = findDeptoById(departamentoId);
             dep = deps.get(0);
         } catch (Exception e) {
-            return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         if (dep != null) {
@@ -125,7 +125,7 @@ public class DepartamentosController {
         }
 
         if (resultado != -1) {
-            String json = String.format("{ \"userId\": %s, \"result\": %s  }", departamentoId, resultado);
+            String json = String.format("{ \"deptoId\": %s, \"result\": %s  }", departamentoId, resultado);
             return new ResponseEntity<>(json, HttpStatus.OK);
         }
         return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);

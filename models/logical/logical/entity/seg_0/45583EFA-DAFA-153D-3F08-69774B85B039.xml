@@ -4,7 +4,7 @@
 <createdTime>2020-09-26 20:07:41 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,7 +20,7 @@
 <createdTime>2020-09-26 20:07:41 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -33,9 +33,10 @@
 <generatorID>AD615D41-E354-2AE6-B841-5CA2C482DF69</generatorID>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <referedAttribute>808E8EFA-104A-0CCE-8BAC-B9CD747AC9F6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -45,7 +46,7 @@
 <createdTime>2020-09-26 21:11:29 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -59,7 +60,7 @@
 <createdTime>2020-09-26 21:14:17 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -72,7 +73,7 @@
 <createdTime>2020-09-26 21:14:42 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -80,13 +81,13 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_tipo" id="072D71A9-D855-23F4-31CF-906429114C8D">
+<Attribute name="id_tipo1" id="64F27ED7-B445-6572-075D-92D5880E426F">
 <createdBy>Bruno</createdBy>
-<createdTime>2020-09-26 22:04:17 UTC</createdTime>
-<generatorID>C95CB8E3-6C7A-00F9-F29C-6496DB3C95BC</generatorID>
+<createdTime>2020-10-14 16:28:20 UTC</createdTime>
+<generatorID>802BA115-ECD4-4A53-82E0-3167137D3687</generatorID>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <referedAttribute>0D5C759B-AF05-9716-05A6-2C8FFC5A73DE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -101,7 +102,7 @@
 <createdTime>2020-09-26 20:07:41 UTC</createdTime>
 <ownerDesignName>logical</ownerDesignName>
 <engineerTo>
-<item key="B24ACCA3-7CA5-B2B6-417F-E1CEB39E4A66" value="true"/>
+<item key="A017DD49-F68C-DAE0-30CC-589ED6741A95" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

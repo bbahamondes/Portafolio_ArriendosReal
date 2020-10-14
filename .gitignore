@@ -232,3 +232,5 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+
+models/logical/*

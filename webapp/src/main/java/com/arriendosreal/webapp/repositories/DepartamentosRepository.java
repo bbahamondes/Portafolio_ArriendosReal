@@ -3,6 +3,8 @@ package com.arriendosreal.webapp.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
+
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import com.arriendosreal.webapp.entities.Departmentos;
@@ -12,6 +14,7 @@ public interface DepartamentosRepository extends JpaRepository<Departmentos, Int
     // List<Users> findByProfile(String profile);
 
     Optional<Departmentos> findByIdDepartmento(int departamentoId);
+    Optional<Departmentos> findByIdDepartmento(BigDecimal departamentoId);
     
     @Procedure(name = "Departmentos.createDepartmento")
     int createDepartamento(@Param("in_nombre") String nombre, 
