@@ -8,7 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,6 +21,20 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "CHECKOUT")
+@NamedStoredProcedureQuery(name = "Checkout.createCheckOut", procedureName = "SP_CREAR_CHECKOUT", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Checkout.updateCheckOut", procedureName = "SP_UPD_CHECKOUT", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkout", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Checkout.deleteCheckOut", procedureName = "SP_DEL_CHECKOUT", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkout", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
+
 public class Checkout implements java.io.Serializable {
 
     private BigDecimal idCheckout;

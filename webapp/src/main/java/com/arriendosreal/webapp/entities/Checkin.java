@@ -8,7 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,6 +21,21 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "CHECKIN")
+@NamedStoredProcedureQuery(name = "Checkin.createCheckIn", procedureName = "SP_CREAR_CHECKIN", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_pago", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Checkin.updateCheckIn", procedureName = "SP_UPD_CHECKIN", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkin", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_pago", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Checkin.deleteCheckIn", procedureName = "SP_DEL_CHECKIN", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkin", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
 public class Checkin implements java.io.Serializable {
 
     private BigDecimal idCheckin;
