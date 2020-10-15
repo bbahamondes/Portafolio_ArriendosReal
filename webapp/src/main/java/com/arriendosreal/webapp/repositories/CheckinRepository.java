@@ -3,12 +3,17 @@ package com.arriendosreal.webapp.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
+
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Optional;
 
 import com.arriendosreal.webapp.entities.Checkin;
 
 public interface CheckinRepository extends JpaRepository<Checkin, Integer> {
 
+    Optional<Checkin> findByIdCheckin(BigDecimal checkinId);
+    
     @Procedure(name = "Checkin.createCheckIn")
     int createCheckIn(@Param("in_fecha") Date fecha, 
             @Param("in_pago") int pago);

@@ -9,7 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -19,6 +22,22 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "ESTADIAS", uniqueConstraints = { @UniqueConstraint(columnNames = "CHECKIN_ID_CHECKIN"),
         @UniqueConstraint(columnNames = "CHECKOUT_ID_CHECKOUT") })
+
+@NamedStoredProcedureQuery(name = "Estadias.createEstadias", procedureName = "SP_CREAR_ESTADIA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkin", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkout", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Estadias.updateEstadias", procedureName = "SP_UPD_ESTADIA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_estadia", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkin", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_checkout", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Estadias.deleteEstadias", procedureName = "SP_DEL_ESTADIA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_estadia", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
 public class Estadias implements java.io.Serializable {
 
     private BigDecimal idEstadia;

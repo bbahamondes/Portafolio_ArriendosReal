@@ -1,12 +1,17 @@
 package com.arriendosreal.webapp.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 /**
@@ -14,6 +19,24 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "MULTAS")
+
+@NamedStoredProcedureQuery(name = "Multas.createMultas", procedureName = "SP_CREAR_MULTAS", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_monto_multa", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_idCheckOut", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Multas.updateMultas", procedureName = "SP_UPD_MULTAS", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_multas", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_monto_multa", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_idCheckOut", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Multas.deleteMultas", procedureName = "SP_DEL_MULTAS", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_multas", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
 public class Multas implements java.io.Serializable {
 
     private BigDecimal idMultas;
