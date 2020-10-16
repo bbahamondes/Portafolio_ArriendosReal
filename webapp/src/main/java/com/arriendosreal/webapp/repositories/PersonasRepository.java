@@ -1,5 +1,8 @@
 package com.arriendosreal.webapp.repositories;
 
+import java.math.BigDecimal;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
@@ -7,6 +10,8 @@ import com.arriendosreal.webapp.entities.Personas;
 
 public interface PersonasRepository extends JpaRepository<Personas, Integer> {
 
+    Optional<Personas> findByIdPersona(int personaId);
+    
     @Procedure(name = "Personas.createPersona")
     int createPersona(@Param("in_rut") String rut, @Param("in_nombre") String nombre,
             @Param("in_apellidos") String apellidos, @Param("in_telefono") String telefono,

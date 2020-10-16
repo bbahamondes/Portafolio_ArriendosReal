@@ -10,7 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +24,28 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "RESERVAS", uniqueConstraints = @UniqueConstraint(columnNames = "ESTADIAS_ID_ESTADIA"))
+
+@NamedStoredProcedureQuery(name = "Reservas.createReservas", procedureName = "SP_CREAR_RESERVA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_entrada", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_salida", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Personas_id_persona", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Estadias_id_estadia", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT  , name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Reservas.updateReservas", procedureName = "SP_UPD_RESERVA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_reserva", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_entrada", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_salida", type = Date.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Personas_id_persona", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Estadias_id_estadia", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Reservas.deleteReservas", procedureName = "SP_DEL_RESERVA", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_reserva", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
 public class Reservas implements java.io.Serializable {
 
     private BigDecimal idReserva;
