@@ -1,18 +1,12 @@
 package com.arriendosreal.webapp.entities;
 
-import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.StoredProcedureParameter;
 import javax.persistence.ParameterMode;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,7 +29,7 @@ import javax.persistence.Table;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_profile_id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
-@NamedStoredProcedureQuery(name = "Users.getUserById", procedureName = "SP_GET_USERS", resultClasses = String.class, parameters = {
+@NamedStoredProcedureQuery(name = "Users.getUserById", procedureName = "SP_GET_USERS", resultClasses = Users.class, parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = void.class) })
 
@@ -46,18 +40,18 @@ import javax.persistence.Table;
 public class Users implements java.io.Serializable {
 
     private int userId;
-    private int Profiles_Profile_Id;
+    private int profiles_profile_Id;
     private String username;
     private String email;
     private String password;
-    private Set<Personas> personases = new HashSet<Personas>(0);
+    //private Set<Personas> personases = new HashSet<Personas>(0);
 
     public Users() {
     }
 
     public Users(int userId, int profiles, String username, String email, String password) {
         this.userId = userId;
-        this.Profiles_Profile_Id = profiles;
+        this.profiles_profile_Id = profiles;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -65,11 +59,11 @@ public class Users implements java.io.Serializable {
 
     public Users(int userId, int profiles, String username, String email, String password, Set<Personas> personases) {
         this.userId = userId;
-        this.Profiles_Profile_Id = profiles;
+        this.profiles_profile_Id = profiles;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.personases = personases;
+        //this.personases = personases;
     }
 
     @Id
@@ -85,11 +79,11 @@ public class Users implements java.io.Serializable {
 
     @Column(name = "PROFILES_PROFILE_ID")
     public int getProfiles() {
-        return this.Profiles_Profile_Id;
+        return this.profiles_profile_Id;
     }
 
     public void setProfiles(int profiles) {
-        this.Profiles_Profile_Id = profiles;
+        this.profiles_profile_Id = profiles;
     }
 
     @Column(name = "USERNAME", nullable = false, length = 50)
@@ -118,7 +112,7 @@ public class Users implements java.io.Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+/*
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
     public Set<Personas> getPersonases() {
         return this.personases;
@@ -126,6 +120,6 @@ public class Users implements java.io.Serializable {
 
     public void setPersonases(Set<Personas> personases) {
         this.personases = personases;
-    }
+    }*/
 
 }

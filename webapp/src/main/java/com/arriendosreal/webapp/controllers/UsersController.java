@@ -1,7 +1,7 @@
 package com.arriendosreal.webapp.controllers;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,6 +71,39 @@ public class UsersController {
         }
 
     }
+    
+    List<Users> findAllUsers() {
+
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_USERS")
+                .returningResultSet("out_users", BeanPropertyRowMapper.newInstance(Users.class));
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_users");
+        }
+
+    }
+    
+    List<String> findUserStringById(int user_id) {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_USERS")
+                .returningResultSet("out_users", BeanPropertyRowMapper.newInstance(String.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_user_id", user_id);
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_users");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createUser(@RequestParam(name = "profileId", required = true) int profileId,
@@ -97,15 +130,33 @@ public class UsersController {
         }
 
     }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllUsers() {
+        List<Users> users = null;
+        try {
+            users = findAllUsers();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        if (users != null) {
+            return new ResponseEntity<>(gson.toJson(users), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
 
     @GetMapping
     public ResponseEntity<String> getUserByID(@RequestParam(name = "userId", required = true) int user_id) {
 
-        Users user = new Users();
-        List<Users> users = new ArrayList<Users>();
+        Users user = null;
+        List<Users> test = null;
         try {
-            users = findUserById(user_id);
-            user = users.get(0);
+            user = findUserById(user_id).get(0);
+            test = findAllUsers();
         } catch (Exception e) {
             user = null;
             System.out.println(e.toString());
@@ -145,8 +196,10 @@ public class UsersController {
         }
 
         if (resultado != -1) {
-            String json = String.format("{ \"userId\": %s, \"result\": %s  }", user_id, resultado);
-            return new ResponseEntity<>(json, HttpStatus.OK);
+            HashMap<String, Integer> output = new HashMap<String, Integer>();
+            output.put("userId", user_id);
+            output.put("resultado", resultado);
+            return new ResponseEntity<>(gson.toJson(output), HttpStatus.OK);
         }
         return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
     }

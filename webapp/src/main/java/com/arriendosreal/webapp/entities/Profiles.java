@@ -1,6 +1,5 @@
 package com.arriendosreal.webapp.entities;
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;

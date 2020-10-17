@@ -18,10 +18,13 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
     int createUser(@Param("in_username") String username, @Param("in_email") String email,
             @Param("in_password") String password, @Param("in_profile_id") int profile_id);
 
-    @Procedure(procedureName = "Users.deleteUser")
+    @Procedure(name = "Users.deleteUser")
     int deleteUser(@Param("in_user_id") int user_id);
+    
+    @Procedure(name = "Users.getUserById")
+    Optional<Users> getUser(@Param("in_user_id") int user_id);
 
-    @Procedure(procedureName = "Users.updateUser")
+    @Procedure(name = "Users.updateUser")
     int updateUser(@Param("in_user_id") int user_id, @Param("in_username") String username,
             @Param("in_email") String email, @Param("in_password") String password,
             @Param("in_profile_id") int profile_id);

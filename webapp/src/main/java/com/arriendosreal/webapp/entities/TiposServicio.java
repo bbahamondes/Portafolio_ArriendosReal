@@ -1,14 +1,10 @@
 package com.arriendosreal.webapp.entities;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedStoredProcedureQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
