@@ -153,10 +153,8 @@ public class UsersController {
     public ResponseEntity<String> getUserByID(@RequestParam(name = "userId", required = true) int user_id) {
 
         Users user = null;
-        List<Users> test = null;
         try {
             user = findUserById(user_id).get(0);
-            test = findAllUsers();
         } catch (Exception e) {
             user = null;
             System.out.println(e.toString());
