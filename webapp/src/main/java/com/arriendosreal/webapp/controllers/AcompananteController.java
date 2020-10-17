@@ -68,6 +68,23 @@ public class AcompananteController {
         }
 
     }
+    
+    List<Acompanantes> findAllAcompanante() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_ACOMPANANTE")
+                .returningResultSet("out_acompanante", BeanPropertyRowMapper.newInstance(Acompanantes.class));
+        
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_acompanante");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createAcompanante(@RequestParam(name = "rut", required = true) String rut,
@@ -94,6 +111,25 @@ public class AcompananteController {
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllAcompanante() {
+
+        List<Acompanantes> aco = null;
+        try {
+            aco = findAllAcompanante();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (aco != null) {            
+            String json = gson.toJson(aco); 
+            return new ResponseEntity<>(json, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

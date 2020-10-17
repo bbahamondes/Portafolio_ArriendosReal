@@ -66,6 +66,22 @@ public class DepartamentosController {
         }
 
     }
+    
+    List<Departmentos> findAllDeptos() {
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_DEPARTAMENTO")
+                .returningResultSet("out_departamento", BeanPropertyRowMapper.newInstance(Departmentos.class));
+        
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_departamento");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createDepartmento(@RequestParam(name = "nombre", required = true) String nombre,
@@ -90,6 +106,24 @@ public class DepartamentosController {
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllDepartamentos() {
+        List<Departmentos> deps = null;
+        try {
+            deps = findAllDeptos();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (deps != null) {
+            String json = gson.toJson(deps);
+            return new ResponseEntity<>(json, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Depto Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

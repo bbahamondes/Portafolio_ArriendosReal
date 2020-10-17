@@ -67,6 +67,21 @@ public class CheckOutController {
         }
 
     }
+    
+    List<Checkout> findAllCheckOut() {
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_CHECKOUT")
+                .returningResultSet("out_checkout", BeanPropertyRowMapper.newInstance(Checkout.class));
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_checkout");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createCheckout(@RequestParam(name = "fecha", required = true) Date fecha) {
@@ -90,6 +105,28 @@ public class CheckOutController {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllCheckout() {
+        List<Checkout> couts = new ArrayList<Checkout>();
+        try {
+            couts = findAllCheckOut();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (couts != null) {
+            try {
+                String json = gson.toJson(couts);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping

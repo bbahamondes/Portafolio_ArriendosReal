@@ -66,6 +66,22 @@ public class TiposServicioController {
         }
 
     }
+    
+    List<TiposServicio> findAllTipoServicio() {
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_TIPO_SERVICIO")
+                .returningResultSet("out_tipo_servicio", BeanPropertyRowMapper.newInstance(TiposServicio.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_tipo_servicio");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createTipoServicio(@RequestParam(name = "descripcion", required = true) String descripcion) {
@@ -90,6 +106,29 @@ public class TiposServicioController {
         }
 
     }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllTipoServicio() {
+        List<TiposServicio> tipos = null;
+        try {
+            tipos = findAllTipoServicio();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (tipos != null) {
+            try {
+                String json = gson.toJson(tipos);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     @GetMapping
     public ResponseEntity<String> getTipoServicioByID(@RequestParam(name = "tipoServicioId", required = true) int tipoServicioId) {

@@ -81,6 +81,23 @@ public class ReservasController {
         }
 
     }
+    
+    List<Reservas> findAllReserva() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_RESERVA")
+                .returningResultSet("out_reserva", BeanPropertyRowMapper.newInstance(Reservas.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_reserva");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createReserva(@RequestParam(name = "fechaEntrada", required = true) Date fechaEntrada,
@@ -120,6 +137,28 @@ public class ReservasController {
         }
 
     }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllReserva() {
+        List<Reservas> res = null;
+        try {
+            res = findAllReserva();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (res != null) {
+            try {
+                String json = gson.toJson(res);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }    
 
     @GetMapping
     public ResponseEntity<String> getReservaByID(@RequestParam(name = "reservaId", required = true) int reservaId) {

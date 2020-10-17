@@ -53,6 +53,23 @@ public class CheckinController {
         simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_CHECKIN")
                 .returningResultSet("out_checkin", BeanPropertyRowMapper.newInstance(Checkin.class));
     }
+    
+    List<Checkin> findAllCheckIn() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_CHECKIN")
+                .returningResultSet("out_checkin", BeanPropertyRowMapper.newInstance(Checkin.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_checkin");
+        }
+
+    }
 
     List<Checkin> findCheckInById(int checkinId) {
 
@@ -91,6 +108,29 @@ public class CheckinController {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllCheckin() {
+        List<Checkin> cins = new ArrayList<Checkin>();
+        try {
+            cins = findAllCheckIn();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (cins != null) {
+            try {
+                String json = gson.toJson(cins);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping

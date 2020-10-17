@@ -73,6 +73,23 @@ public class InventariosController {
         }
 
     }
+    
+    List<Inventarios> findAllInventarios() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_INVENTARIO")
+                .returningResultSet("out_inventario", BeanPropertyRowMapper.newInstance(Inventarios.class));
+        
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_inventario");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createInventario(@RequestParam(name = "descripcion", required = true) String descripcion,
@@ -90,6 +107,8 @@ public class InventariosController {
                 Departmentos depto = deptoRepo.findByIdDepartmento(BigDecimal.valueOf(departamentoId)).orElse(null);
                 depto.setServicioses(null);
                 depto.setInventarioses(null);
+                depto.setMantencioneses(null);
+                depto.setReservases(null);
                 Inventarios inv = new Inventarios(BigDecimal.valueOf(resultado), depto);
                 String json = gson.toJson(inv);                
                 return new ResponseEntity<>(json, HttpStatus.OK);
@@ -101,6 +120,29 @@ public class InventariosController {
         }
 
     }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllInventarios() {
+        List<Inventarios> inventarios = new ArrayList<Inventarios>();
+        try {
+            inventarios = findAllInventarios();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (inventarios != null) {
+            try {
+                String json = gson.toJson(inventarios);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
 
     @GetMapping
     public ResponseEntity<String> getInventarioByID(@RequestParam(name = "inventarioId", required = true) int inventarioId) {

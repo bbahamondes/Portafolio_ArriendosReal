@@ -22,8 +22,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.google.gson.Gson;
 import com.arriendosreal.webapp.entities.Profiles;
+import com.arriendosreal.webapp.entities.Users;
 import com.arriendosreal.webapp.repositories.ProfilesRepository;
 
 @RequestMapping(value = "/api/v1/profile", produces = "application/json; charset=utf-8")
@@ -37,6 +38,8 @@ public class ProfilesController {
 
     @Autowired
     private ProfilesRepository profileRepo;
+    
+    private Gson gson = new Gson();
 
     @PostConstruct
     public void init() {
@@ -62,6 +65,41 @@ public class ProfilesController {
         }
 
     }
+    
+    List<Profiles> findAllProfiles() {
+
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_PROFILES")
+                .returningResultSet("out_profiles", BeanPropertyRowMapper.newInstance(Profiles.class));
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_profiles");
+        }
+
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllProfiles() {
+        List<Profiles> profiles = null;
+        try {
+            profiles = findAllProfiles();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        if (profiles != null) {
+            return new ResponseEntity<>(gson.toJson(profiles), HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity<>("Profile Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
 
     @PostMapping
     public ResponseEntity<String> createProfile(

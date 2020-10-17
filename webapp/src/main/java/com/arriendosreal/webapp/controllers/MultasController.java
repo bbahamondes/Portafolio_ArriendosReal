@@ -71,6 +71,23 @@ public class MultasController {
         }
 
     }
+    
+    List<Multas> findAllMultas() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_MULTAS")
+                .returningResultSet("out_multa", BeanPropertyRowMapper.newInstance(Multas.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_multa");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createMultas(@RequestParam(name = "descripcion", required = true) String descripcion,
@@ -99,6 +116,28 @@ public class MultasController {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllMultas() {
+        List<Multas> multas = new ArrayList<Multas>();
+        try {
+            multas =  findAllMultas();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (multas != null) {
+            try {
+                String json = gson.toJson(multas);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping

@@ -70,6 +70,23 @@ public class PersonasController {
         }
 
     }
+    
+    List<Personas> findAllPersonas() {
+
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_PERSONA")
+                .returningResultSet("out_persona", BeanPropertyRowMapper.newInstance(Personas.class));
+        
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_persona");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createPersona(@RequestParam(name = "rut", required = true) String rut,
@@ -91,6 +108,23 @@ public class PersonasController {
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getPersonaByID() {
+        List<Personas> persons = null;
+        try {
+            persons = findAllPersonas();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        if (persons != null) {            
+            return new ResponseEntity<>(gson.toJson(persons), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

@@ -75,6 +75,23 @@ public class EstadiasController {
         }
 
     }
+    
+    List<Estadias> findAllEstadias() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_ESTADIA")
+                .returningResultSet("out_estadia", BeanPropertyRowMapper.newInstance(Estadias.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_estadia");
+        }
+
+    }
 
     @PostMapping
     public ResponseEntity<String> createEstadia(@RequestParam(name = "checkinId", required = true) int checkinId,
@@ -104,6 +121,28 @@ public class EstadiasController {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllEstadia() {
+        List<Estadias> estadias = null;
+        try {
+            estadias =  findAllEstadias();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (estadias != null) {
+            try {
+                String json = gson.toJson(estadias);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping

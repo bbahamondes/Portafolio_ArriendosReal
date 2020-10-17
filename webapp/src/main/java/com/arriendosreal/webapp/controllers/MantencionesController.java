@@ -59,6 +59,23 @@ public class MantencionesController {
         simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_MANTENCIONES")
                 .returningResultSet("out_mantencion", BeanPropertyRowMapper.newInstance(Mantenciones.class));
     }
+    
+    List<Mantenciones> findAllMantenciones() {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ALL_MANTENCIONES")
+                .returningResultSet("out_mantencion", BeanPropertyRowMapper.newInstance(Mantenciones.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource();
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_mantencion");
+        }
+
+    }
 
     List<Mantenciones> findMantencionesById(int mantencionId) {
 
@@ -105,6 +122,28 @@ public class MantencionesController {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<String> getAllMantenciones() {
+        List<Mantenciones> mantenciones = null;
+        try {
+            mantenciones = findAllMantenciones();
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (mantenciones != null) {
+            try {
+                String json = gson.toJson(mantenciones);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping
