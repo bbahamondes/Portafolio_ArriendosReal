@@ -24,7 +24,7 @@ import javax.persistence.UniqueConstraint;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_tipos_servicio_id_tipo", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_costo_operacion", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_valor_cliente", type = Integer.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_departamento_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
 
 @NamedStoredProcedureQuery(name = "Servicios.updateServicio", procedureName = "SP_UPD_SERVICIO", parameters = {
@@ -33,7 +33,7 @@ import javax.persistence.UniqueConstraint;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_tipos_servicio_id_tipo", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_costo_operacion", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_valor_cliente", type = Integer.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_departamento_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class)})
 
 @NamedStoredProcedureQuery(name = "Servicios.deleteServicio", procedureName = "SP_DEL_SERVICIO", parameters = {

@@ -17,7 +17,7 @@ public interface ReservasRepository extends JpaRepository<Reservas, Integer> {
     @Procedure(name = "Reservas.createReservas")
     int createReservas(@Param("in_fecha_entrada") Date fechaEntrada, 
             @Param("in_fecha_salida") Date fechaSalida,
-            @Param("in_Departamentos_id_departamento") int departamentoId, 
+            @Param("in_id_departamento") int departamentoId, 
             @Param("in_Personas_id_persona") int personaId, 
             @Param("in_Estadias_id_estadia") int estadiaId);
 
@@ -28,7 +28,7 @@ public interface ReservasRepository extends JpaRepository<Reservas, Integer> {
     int updateReservas(@Param("in_id_reserva") int reservaId, 
             @Param("in_fecha_entrada") Date fechaEntrada, 
             @Param("in_fecha_salida") Date fechaSalida,
-            @Param("in_Departamentos_id_departamento") int departamentoId, 
+            @Param("in_id_departamento") int departamentoId, 
             @Param("in_Personas_id_persona") int personaId, 
             @Param("in_Estadias_id_estadia") int estadiaId);
 

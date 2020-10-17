@@ -20,13 +20,13 @@ import javax.persistence.Table;
 
 @NamedStoredProcedureQuery(name = "Inventarios.createInventario", procedureName = "SP_CREAR_INVENTARIO", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
 @NamedStoredProcedureQuery(name = "Inventarios.updateInventario", procedureName = "SP_UPD_INVENTARIO", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_inventario", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_descripcion", type = String.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
 
 @NamedStoredProcedureQuery(name = "Inventarios.deleteInventario", procedureName = "SP_DEL_INVENTARIO", parameters = {

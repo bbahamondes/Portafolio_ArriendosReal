@@ -177,11 +177,11 @@ CREATE OR REPLACE PROCEDURE SP_CREAR_SERVICIO (
     in_tipos_servicio_id_tipo IN INTEGER,
     in_costo_operacion IN INTEGER,
     in_valor_cliente IN INTEGER,
-    in_departamento_id_departamento IN INTEGER,
+    in_id_departamento IN INTEGER,
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    INSERT INTO servicios (descripcion, tipos_servicio_id_tipo, costo_operacion, valor_cliente, departmentos_id_departmento) VALUES (in_descripcion, in_tipos_servicio_id_tipo, in_costo_operacion, in_valor_cliente, in_departamento_id_departamento) RETURNING id_servicio INTO out_resultado;
+    INSERT INTO servicios (descripcion, tipos_servicio_id_tipo, costo_operacion, valor_cliente, departmentos_id_departmento) VALUES (in_descripcion, in_tipos_servicio_id_tipo, in_costo_operacion, in_valor_cliente, in_id_departamento) RETURNING id_servicio INTO out_resultado;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado := -1;
@@ -205,11 +205,11 @@ CREATE OR REPLACE PROCEDURE SP_UPD_SERVICIO (
     in_tipos_servicio_id_tipo IN INTEGER,
     in_costo_operacion IN INTEGER,
     in_valor_cliente IN INTEGER,
-    in_departamento_id_departamento IN INTEGER,
+    in_id_departamento IN INTEGER,
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    UPDATE servicios SET descripcion=in_descripcion,tipos_servicio_id_tipo=in_tipos_servicio_id_tipo,costo_operacion=in_costo_operacion,valor_cliente=in_valor_cliente,departmentos_id_departmento=in_departamento_id_departamento WHERE id_servicio = in_id_servicios;
+    UPDATE servicios SET descripcion=in_descripcion,tipos_servicio_id_tipo=in_tipos_servicio_id_tipo,costo_operacion=in_costo_operacion,valor_cliente=in_valor_cliente,departmentos_id_departmento=in_id_departamento WHERE id_servicio = in_id_servicios;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado :=-1;
@@ -343,11 +343,11 @@ END;
 
 CREATE OR REPLACE PROCEDURE SP_CREAR_INVENTARIO (
     in_descripcion IN VARCHAR2,
-    in_Departamentos_id_departamento IN INTEGER,
+    in_id_departamento IN INTEGER,
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    INSERT INTO inventarios (descripcion,DEPARTMENTOS_id_departmento) VALUES (in_descripcion,in_Departamentos_id_departamento) RETURNING id_inventario INTO out_resultado;
+    INSERT INTO inventarios (descripcion,DEPARTMENTOS_id_departmento) VALUES (in_descripcion,in_id_departamento) RETURNING id_inventario INTO out_resultado;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado := -1;
@@ -368,11 +368,11 @@ END;
 CREATE OR REPLACE PROCEDURE SP_UPD_INVENTARIO (
     in_id_inventario IN INTEGER,
     in_descripcion IN VARCHAR2,
-    in_Departamentos_id_departamento IN INTEGER,
+    in_id_departamento IN INTEGER,
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    UPDATE inventarios SET descripcion=in_descripcion,DEPARTMENTOS_id_departmento=in_Departamentos_id_departamento WHERE id_inventario = in_id_inventario;
+    UPDATE inventarios SET descripcion=in_descripcion,DEPARTMENTOS_id_departmento=in_id_departamento WHERE id_inventario = in_id_inventario;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado :=-1;
@@ -398,13 +398,13 @@ END;
 CREATE OR REPLACE PROCEDURE SP_CREAR_RESERVA (
     in_fecha_entrada IN DATE,
     in_fecha_salida IN DATE,
-    in_Departamentos_id_departamento IN INTEGER,
+    in_id_departamento IN INTEGER,
     in_Personas_id_persona IN INTEGER,
     in_Estadias_id_estadia IN INTEGER,
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    INSERT INTO Reservas (fecha_entrada,fecha_salida,DEPARTMENTOS_id_departmento,Personas_id_persona,Estadias_id_estadia) VALUES (in_fecha_entrada,in_fecha_salida,in_Departamentos_id_departamento,in_Personas_id_persona,in_Estadias_id_estadia) RETURNING id_reserva INTO out_resultado;
+    INSERT INTO Reservas (fecha_entrada,fecha_salida,DEPARTMENTOS_id_departmento,Personas_id_persona,Estadias_id_estadia) VALUES (in_fecha_entrada,in_fecha_salida,in_id_departamento,in_Personas_id_persona,in_Estadias_id_estadia) RETURNING id_reserva INTO out_resultado;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado := -1;
@@ -426,13 +426,13 @@ CREATE OR REPLACE PROCEDURE SP_UPD_RESERVA (
     in_id_reserva IN INTEGER,
     in_fecha_entrada IN DATE,
     in_fecha_salida IN DATE,
-    in_Departamentos_id_departamento IN INTEGER,
+    in_id_departamento IN INTEGER,
     in_Personas_id_persona IN INTEGER,
     in_Estadias_id_estadia IN INTEGER,
     out_resultado OUT NUMBER)
 AS BEGIN
     out_resultado := 0;
-    UPDATE Reservas SET fecha_entrada=in_fecha_entrada,fecha_salida=in_fecha_salida,DEPARTMENTOS_id_departmento=in_Departamentos_id_departamento,Personas_id_persona=in_Personas_id_persona,Estadias_id_estadia=in_Estadias_id_estadia WHERE id_reserva = in_id_reserva;
+    UPDATE Reservas SET fecha_entrada=in_fecha_entrada,fecha_salida=in_fecha_salida,DEPARTMENTOS_id_departmento=in_id_departamento,Personas_id_persona=in_Personas_id_persona,Estadias_id_estadia=in_Estadias_id_estadia WHERE id_reserva = in_id_reserva;
     EXCEPTION
         WHEN OTHERS THEN
             out_resultado :=-1;

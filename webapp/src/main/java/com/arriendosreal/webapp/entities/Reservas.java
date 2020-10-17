@@ -28,7 +28,7 @@ import javax.persistence.UniqueConstraint;
 @NamedStoredProcedureQuery(name = "Reservas.createReservas", procedureName = "SP_CREAR_RESERVA", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_entrada", type = Date.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_salida", type = Date.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Personas_id_persona", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Estadias_id_estadia", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT  , name = "out_resultado", type = Integer.class) })
@@ -37,7 +37,7 @@ import javax.persistence.UniqueConstraint;
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_reserva", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_entrada", type = Date.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_fecha_salida", type = Date.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Departamentos_id_departamento", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_departamento", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Personas_id_persona", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Estadias_id_estadia", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })

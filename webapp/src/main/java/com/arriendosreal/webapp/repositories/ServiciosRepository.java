@@ -13,7 +13,7 @@ public interface ServiciosRepository extends JpaRepository<Servicios, String> {
             @Param("in_tipos_servicio_id_tipo") int tipoServicioId,
             @Param("in_costo_operacion") int costoOperacion,
             @Param("in_valor_cliente") int valorCliente,
-            @Param("in_departamento_id_departamento") int departamentoId);
+            @Param("in_id_departamento") int departamentoId);
 
     @Procedure(name = "Servicios.deleteServicio")
     int deleteServicio(@Param("in_id_servicios") int servicioId);
@@ -24,5 +24,5 @@ public interface ServiciosRepository extends JpaRepository<Servicios, String> {
             @Param("in_tipos_servicio_id_tipo") int tipoServicioId,
             @Param("in_costo_operacion") int costoOperacion,
             @Param("in_valor_cliente") int valorCliente,
-            @Param("in_departamento_id_departamento") int departamentoId);
+            @Param("in_id_departamento") int departamentoId);
 }
