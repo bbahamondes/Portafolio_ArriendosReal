@@ -1,12 +1,17 @@
 package com.arriendosreal.webapp.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 /**
@@ -14,6 +19,27 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ACOMPANANTES")
+@NamedStoredProcedureQuery(name = "Acompanantes.createAcompanante", procedureName = "SP_CREAR_ACOMPANANTE", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellido_pat", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellido_mat", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Reservas_id_reserva", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Acompanantes.updateAcompanante", procedureName = "SP_UPD_ACOMPANANTE", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_acompanante", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_rut", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_nombre", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellido_pat", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_apellido_mat", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_Reservas_id_reserva", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_resultado", type = Integer.class) })
+
+@NamedStoredProcedureQuery(name = "Acompanantes.deleteAcompanante", procedureName = "SP_DEL_ACOMPANANTE", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_id_acompanante", type = Integer.class),
+        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "out_estado", type = Integer.class) })
+
 public class Acompanantes implements java.io.Serializable {
 
     private BigDecimal idAcompanante;
