@@ -1,6 +1,7 @@
 package com.arriendosreal.webapp.controllers;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,8 @@ import com.arriendosreal.webapp.entities.Users;
 import com.arriendosreal.webapp.repositories.ProfilesRepository;
 import com.arriendosreal.webapp.repositories.UsersRepository;
 
-@RequestMapping("/api/v1")
+@RequestMapping(value = "/api/v1/login", produces = "application/json; charset=utf-8")
+@CrossOrigin(origins = "*")
 @RestController
 public class Login {
 
@@ -23,7 +25,7 @@ public class Login {
     @Autowired
     private ProfilesRepository profileRepo;
 
-    @PostMapping(value = "/login", produces = "application/json; charset=utf-8")
+    @PostMapping
     public ResponseEntity<String> login(@RequestParam(name = "email", required = true) String email,
             @RequestParam(name = "password", required = true) String password, Model model) {
 

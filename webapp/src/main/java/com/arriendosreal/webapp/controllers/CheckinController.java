@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,7 @@ import com.arriendosreal.webapp.repositories.CheckinRepository;
 
 
 @RequestMapping(value = "/api/v1/checkin", produces = "application/json; charset=utf-8")
+@CrossOrigin(origins = "*")
 @RestController
 public class CheckinController {
     
@@ -46,12 +48,7 @@ public class CheckinController {
 
     @PostConstruct
     public void init() {
-        // o_name and O_NAME, same
-        jdbcTemplate.setResultsMapCaseInsensitive(true);
-
-        // Convert o_c_book SYS_REFCURSOR to List<Book>
-        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_CHECKIN")
-                .returningResultSet("out_checkin", BeanPropertyRowMapper.newInstance(Checkin.class));
+        jdbcTemplate.setResultsMapCaseInsensitive(true);        
     }
     
     List<Checkin> findAllCheckIn() {
@@ -72,6 +69,9 @@ public class CheckinController {
     }
 
     List<Checkin> findCheckInById(int checkinId) {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_CHECKIN")
+                .returningResultSet("out_checkin", BeanPropertyRowMapper.newInstance(Checkin.class));
 
         SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_checkin_id", checkinId);
 

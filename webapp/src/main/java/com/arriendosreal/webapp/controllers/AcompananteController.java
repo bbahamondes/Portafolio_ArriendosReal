@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,7 @@ import com.arriendosreal.webapp.repositories.ReservasRepository;
 import com.google.gson.Gson;
 
 @RequestMapping(value = "/api/v1/acompanantes", produces = "application/json; charset=utf-8")
+@CrossOrigin(origins = "*")
 @RestController
 public class AcompananteController {
 
@@ -49,13 +51,12 @@ public class AcompananteController {
         // o_name and O_NAME, same
         jdbcTemplate.setResultsMapCaseInsensitive(true);
 
-        // Convert o_c_book SYS_REFCURSOR to List<Book>
-        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ACOMPANANTE")
-                .returningResultSet("out_acompanante", BeanPropertyRowMapper.newInstance(Acompanantes.class));
-
     }
 
     List<Acompanantes> findAcompananteById(int acompananteId) {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_ACOMPANANTE")
+                .returningResultSet("out_acompanante", BeanPropertyRowMapper.newInstance(Acompanantes.class));
 
         SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_acompanante_id", acompananteId);
 

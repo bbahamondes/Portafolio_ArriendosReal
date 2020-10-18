@@ -50,16 +50,14 @@ public class UsersController {
     @PostConstruct
     public void init() {
         // o_name and O_NAME, same
-        jdbcTemplate.setResultsMapCaseInsensitive(true);
-
-        // Convert o_c_book SYS_REFCURSOR to List<Book>
-        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_USERS")
-                .returningResultSet("out_users", BeanPropertyRowMapper.newInstance(Users.class));
+        jdbcTemplate.setResultsMapCaseInsensitive(true);        
 
     }
 
     List<Users> findUserById(int user_id) {
 
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_USERS")
+                .returningResultSet("out_users", BeanPropertyRowMapper.newInstance(Users.class));
         SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_user_id", user_id);
 
         Map out = simpleJdbcCallRefCursor.execute(paramaters);
