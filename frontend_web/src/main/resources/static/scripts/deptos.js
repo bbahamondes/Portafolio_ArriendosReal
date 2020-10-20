@@ -11,8 +11,8 @@ $(document).ready(function(){
 			{data: 'direccion'},
 			{data: 'ciudad'},
 			{data: 'region'},
-			{data: 'precio'},
-		]
+			{data: 'precio', type: "num"}
+		]	
 	})
 	
 });

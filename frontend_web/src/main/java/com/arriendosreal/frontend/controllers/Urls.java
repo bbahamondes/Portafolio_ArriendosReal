@@ -24,16 +24,10 @@ public class Urls {
         return "registro";
     }
 
-    @GetMapping("/reserva")
-    public String reserva(@CookieValue(value = "username") String user, Model model) {
+    @GetMapping("/reservas")
+    public String reserva(@CookieValue(value = "username", required=false) String user, Model model) {
         model.addAttribute("user", user);
-        return "menu";
-    }
-
-    @GetMapping("/promociones")
-    public String promociones(@CookieValue(value = "username") String user, Model model) {
-        model.addAttribute("user", user);
-        return "menu";
+        return "reservas";
     }
 
     @GetMapping("/departamentos")
