@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,7 @@ import com.arriendosreal.webapp.repositories.ProfilesRepository;
 import com.arriendosreal.webapp.repositories.UsersRepository;
 
 @RequestMapping(value = "/api/v1/user", produces = "application/json; charset=utf-8")
+@CrossOrigin(origins = "*")
 @RestController
 public class UsersController {
 
