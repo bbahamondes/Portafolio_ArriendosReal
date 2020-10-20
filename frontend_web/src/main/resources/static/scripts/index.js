@@ -23,7 +23,7 @@ $(document).ready(function(){
 					document.cookie = "username=" + e.email;
 					document.cookie = "profile=" + e.profile;  
 					console.log("success!", e);
-					window.location.href = '/menu';
+					window.location.href = '/';
 				},
 				401: function() {
 					$(".alert").show();

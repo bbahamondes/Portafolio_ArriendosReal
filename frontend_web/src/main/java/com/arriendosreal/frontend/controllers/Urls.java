@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Urls {
     
     @GetMapping("/")
-    public String menu(Model model) {
+    public String menu(@CookieValue(value = "username", required=false) String user, Model model) {
+        model.addAttribute("user", user);
         return "menu";
     }
     
@@ -21,12 +22,6 @@ public class Urls {
     @GetMapping("/register")
     public String register(Model model) {
         return "registro";
-    }
-
-    @GetMapping("/menu")
-    public String menu(@CookieValue(value = "username") String user, Model model) {
-        model.addAttribute("user", user);
-        return "menu";
     }
 
     @GetMapping("/reserva")
@@ -42,7 +37,7 @@ public class Urls {
     }
 
     @GetMapping("/departamentos")
-    public String departamentos(@CookieValue(value = "username") String user, Model model) {
+    public String departamentos(@CookieValue(value = "username", required=false) String user, Model model) {
         model.addAttribute("user", user);
         return "departamentos";
     }

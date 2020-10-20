@@ -35,33 +35,39 @@ $(document).ready(function(){
 		$.ajax(settings).done(function (response) {
 		  userResult = JSON.parse(response);
 		  console.log(userResult);
+		  let rut = $('#rut').val();
+		  let nombre = $('#nombre').val();		
+		  let apellidos = $('#apellidos').val();
+		  let telefonos = $('#telefonos').val();
+		 
+		  var form = new FormData();
+		  form.append("rut", rut);
+		  form.append("nombre", nombre);
+		  form.append("apellidos", apellidos);
+		  form.append("telefono", telefonos);
+		  form.append("userId", userResult.userId);
+		
+		  var settings = {
+  		    "url": url+path2,
+		    "method": "POST",
+		    "timeout": 0,
+		    "processData": false,
+		    "mimeType": "multipart/form-data",
+		    "contentType": false,
+		    "data": form,
+			"statusCode": {
+				200: function(e){
+					alert('Usuario creado exitosamente!');
+					window.location.href = '/login';
+				}
+			}
+		  };
+		
+		  $.ajax(settings).done(function (response) {
+		    console.log(response);
+		  });
 		});
 		
-		let rut = $('#rut').val();
-		let nombre = $('#nombre').val();		
-		let apellidos = $('#apellidos').val();
-		let telefonos = $('#telefonos').val();
-		
-		var form = new FormData();
-		form.append("rut", rut);
-		form.append("nombre", nombre);
-		form.append("apellidos", apellidos);
-		form.append("telefono", telefonos);
-		form.append("userId", userResult.userId);
-		
-		var settings = {
-		  "url": url+path2,
-		  "method": "POST",
-		  "timeout": 0,
-		  "processData": false,
-		  "mimeType": "multipart/form-data",
-		  "contentType": false,
-		  "data": form
-		};
-		
-		$.ajax(settings).done(function (response) {
-		  console.log(response);
-		});
 		
 	});
 	

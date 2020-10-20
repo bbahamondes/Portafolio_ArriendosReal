@@ -43,7 +43,7 @@
 	      </ul>
           <ul  class="navbar-nav px-3">
 	        <li th:if="${user != null}" class="nav-item text-nowrap">
-	          <a class="nav-link" href="#">Sign out</a>
+	          <a class="nav-link" href="#" onclick="document.cookie='username=; expires=Thu, 01 Jan 1970 00:00:00 UTC';document.cookie='profile=; expires=Thu, 01 Jan 1970 00:00:00 UTC';location.reload()">Sign out</a>
 	        </li>
 	        <li th:unless="${user != null}" class="nav-item text-nowrap">
 	          <a class="nav-link" href="/login">Sign in</a>
