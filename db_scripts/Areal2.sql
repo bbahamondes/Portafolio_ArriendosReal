@@ -15,7 +15,8 @@ CREATE TABLE acompanantes (
     nombre               VARCHAR2(50),
     apellido_pat         VARCHAR2(50),
     apellido_mat         VARCHAR2(50),
-    reservas_id_reserva  INTEGER NOT NULL
+    reservas_id_reserva  INTEGER NOT NULL,    
+    CONSTRAINT unique_acompanantes UNIQUE (rut)
 );
 
 ALTER TABLE acompanantes ADD CONSTRAINT acompanantes_pk PRIMARY KEY ( id_acompanante );
@@ -99,7 +100,8 @@ CREATE TABLE personas (
     nombre         VARCHAR2(50),
     apellidos      VARCHAR2(50),
     telefono       VARCHAR2(50),
-    users_user_id  INTEGER NOT NULL
+    users_user_id  INTEGER NOT NULL,
+    CONSTRAINT unique_personas UNIQUE (rut)
 );
 
 CREATE UNIQUE INDEX personas__idx ON
@@ -155,7 +157,8 @@ CREATE TABLE users (
     username             VARCHAR2(50) NOT NULL,
     email                VARCHAR2(50) NOT NULL,
     password             VARCHAR2(50) NOT NULL,
-    profiles_profile_id  INTEGER NOT NULL
+    profiles_profile_id  INTEGER NOT NULL,
+    CONSTRAINT unique_users UNIQUE (username, email)
 );
 
 ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY ( user_id );
