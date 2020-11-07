@@ -162,55 +162,55 @@ ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY ( user_id );
 
 ALTER TABLE acompanantes
     ADD CONSTRAINT acompanantes_reservas_fk FOREIGN KEY ( reservas_id_reserva )
-        REFERENCES reservas ( id_reserva );
+        REFERENCES reservas ( id_reserva ) ON DELETE CASCADE ;
 
 ALTER TABLE estadias
     ADD CONSTRAINT estadias_checkin_fk FOREIGN KEY ( checkin_id_checkin )
-        REFERENCES checkin ( id_checkin );
+        REFERENCES checkin ( id_checkin ) ON DELETE CASCADE ;
 
 ALTER TABLE estadias
     ADD CONSTRAINT estadias_checkout_fk FOREIGN KEY ( checkout_id_checkout )
-        REFERENCES checkout ( id_checkout );
+        REFERENCES checkout ( id_checkout ) ON DELETE CASCADE ;
 
 ALTER TABLE inventarios
     ADD CONSTRAINT inventarios_departmentos_fk FOREIGN KEY ( departmentos_id_departmento )
-        REFERENCES departmentos ( id_departmento );
+        REFERENCES departmentos ( id_departmento ) ON DELETE CASCADE ;
 
 ALTER TABLE mantenciones
     ADD CONSTRAINT mantenciones_departmentos_fk FOREIGN KEY ( departmentos_id_departmento )
-        REFERENCES departmentos ( id_departmento );
+        REFERENCES departmentos ( id_departmento ) ON DELETE CASCADE ;
 
 ALTER TABLE multas
     ADD CONSTRAINT multas_checkout_fk FOREIGN KEY ( checkout_id_checkout )
-        REFERENCES checkout ( id_checkout );
+        REFERENCES checkout ( id_checkout ) ON DELETE CASCADE ;
 
 ALTER TABLE personas
     ADD CONSTRAINT personas_users_fk FOREIGN KEY ( users_user_id )
-        REFERENCES users ( user_id );
+        REFERENCES users ( user_id ) ON DELETE CASCADE ;
 
 ALTER TABLE reservas
     ADD CONSTRAINT reservas_departmentos_fk FOREIGN KEY ( departmentos_id_departmento )
-        REFERENCES departmentos ( id_departmento );
+        REFERENCES departmentos ( id_departmento ) ON DELETE CASCADE ;
 
 ALTER TABLE reservas
     ADD CONSTRAINT reservas_estadias_fk FOREIGN KEY ( estadias_id_estadia )
-        REFERENCES estadias ( id_estadia );
+        REFERENCES estadias ( id_estadia ) ON DELETE CASCADE ;
 
 ALTER TABLE reservas
     ADD CONSTRAINT reservas_personas_fk FOREIGN KEY ( personas_id_persona )
-        REFERENCES personas ( id_persona );
+        REFERENCES personas ( id_persona ) ON DELETE CASCADE ;
 
 ALTER TABLE servicios
     ADD CONSTRAINT servicios_departmentos_fk FOREIGN KEY ( departmentos_id_departmento )
-        REFERENCES departmentos ( id_departmento );
+        REFERENCES departmentos ( id_departmento ) ON DELETE CASCADE ;
 
 ALTER TABLE servicios
     ADD CONSTRAINT servicios_tipos_servicio_fk FOREIGN KEY ( tipos_servicio_id_tipo )
-        REFERENCES tipos_servicio ( id_tipo );
+        REFERENCES tipos_servicio ( id_tipo ) ON DELETE CASCADE ;
 
 ALTER TABLE users
     ADD CONSTRAINT users_profiles_fk FOREIGN KEY ( profiles_profile_id )
-        REFERENCES profiles ( profile_id );
+        REFERENCES profiles ( profile_id ) ON DELETE CASCADE ;
 
 
 
