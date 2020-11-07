@@ -141,6 +141,11 @@ public class UsersController {
         }
 
         if (users != null) {
+            users.forEach(user -> {
+                var profile = profileRepo.findByProfileId(userRepo.findById(user.getUserId()).orElse(null).getProfiles())
+                        .orElse(null);
+                user.setProfiles(profile.getProfileId());
+            });
             return new ResponseEntity<>(gson.toJson(users), HttpStatus.OK);
         } else {
             return new ResponseEntity<>("User Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
