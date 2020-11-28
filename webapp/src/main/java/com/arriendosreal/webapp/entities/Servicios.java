@@ -44,6 +44,8 @@ public class Servicios implements java.io.Serializable {
 
     private BigDecimal idServicio;
     private Departmentos departmentos;
+    
+    @ManyToOne(targetEntity = TiposServicio.class)
     private TiposServicio tiposServicio;
     private String descripcion;
     private BigDecimal costoOperacion;
@@ -88,8 +90,8 @@ public class Servicios implements java.io.Serializable {
     public void setDepartmentos(Departmentos departmentos) {
         this.departmentos = departmentos;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = TiposServicio.class)
     @JoinColumn(name = "TIPOS_SERVICIO_ID_TIPO", unique = true, nullable = false)
     public TiposServicio getTiposServicio() {
         return this.tiposServicio;

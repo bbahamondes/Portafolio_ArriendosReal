@@ -113,7 +113,7 @@ public class ServiciosController {
         if (resultado > 0) {
             try {
                 Departmentos depto = deptoRepo.findByIdDepartmento(BigDecimal.valueOf(departamentoId)).orElse(null);
-                depto.setServicioses(null);
+                depto.setServicioses(null); 
                 TiposServicio tipo = tipoRepo.findByIdTipo(BigDecimal.valueOf(tipoServicioId)).orElse(null);
                 Servicios servicio = new Servicios(BigDecimal.valueOf(resultado), depto, tipo, descripcion, BigDecimal.valueOf(costoOperacion), BigDecimal.valueOf(valorCliente));
                 String json = gson.toJson(servicio);                
@@ -138,6 +138,12 @@ public class ServiciosController {
 
         if (servicios != null) {
             try {
+                var test = serviciosRepo.findAll();
+                servicios.forEach(servicio -> {
+                    var test2 = serviciosRepo.findById(servicio.getIdServicio());
+                    var s = serviciosRepo.findByIdServicio(servicio.getIdServicio()).orElse(null);
+                    servicio = s;
+                });
                 String json = gson.toJson(servicios);
                 return new ResponseEntity<>(json, HttpStatus.OK);
             } catch (Exception e) {
@@ -154,6 +160,8 @@ public class ServiciosController {
         Servicios servicio = new Servicios();
         List<Servicios> servicios = new ArrayList<Servicios >();
         try {
+            servicio = serviciosRepo.findByIdServicio(BigDecimal.valueOf(servicioId)).orElse(null);
+            servicio = serviciosRepo.findById(BigDecimal.valueOf(servicioId)).orElse(null);
             servicios = findServiciosById(servicioId);
             servicio = servicios.get(0);
         } catch (Exception e) {

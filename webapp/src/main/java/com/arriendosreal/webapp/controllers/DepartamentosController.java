@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -149,6 +150,27 @@ public class DepartamentosController {
         }
 
     }
+    
+    @GetMapping(value = "/{departamentoId}")
+    public ResponseEntity<String> getDepartamentoByID2(@PathVariable(name = "departamentoId", required = true) int departamentoId) {
+
+        Departmentos dep = new Departmentos();
+        List<Departmentos> deps = new ArrayList<Departmentos>();
+        try {
+            deps = findDeptoById(departamentoId);
+            dep = deps.get(0);
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (dep != null) {
+            String json = gson.toJson(dep);
+            return new ResponseEntity<>(json, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Depto Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }    
 
     @DeleteMapping
     public ResponseEntity<String> deleteDeptoByID(@RequestParam(name = "departamentoId", required = true) int departamentoId) {

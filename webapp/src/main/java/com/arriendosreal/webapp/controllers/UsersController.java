@@ -52,7 +52,7 @@ public class UsersController {
     @PostConstruct
     public void init() {
         // o_name and O_NAME, same
-        jdbcTemplate.setResultsMapCaseInsensitive(true);        
+        jdbcTemplate.setResultsMapCaseInsensitive(true);
 
     }
 
@@ -87,23 +87,6 @@ public class UsersController {
         }
 
     }
-    
-    List<String> findUserStringById(int user_id) {
-        
-        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_USERS")
-                .returningResultSet("out_users", BeanPropertyRowMapper.newInstance(String.class));
-
-        SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_user_id", user_id);
-
-        Map out = simpleJdbcCallRefCursor.execute(paramaters);
-
-        if (out == null) {
-            return Collections.emptyList();
-        } else {
-            return (List) out.get("out_users");
-        }
-
-    }
 
     @PostMapping
     public ResponseEntity<String> createUser(@RequestParam(name = "profileId", required = true) int profileId,
@@ -120,10 +103,7 @@ public class UsersController {
 
         if (resultado > 0) {
             Users user = new Users(resultado, profileId, username, email, password);
-            String json2 = gson.toJson(user); 
-            String json = "{\"userId\": \"%s\", " + "\"username\": \"%s\", " + " \"email\": \"%s\", "
-                    + "\"profile\": \"%s\"}";
-            json = String.format(json, resultado, username, email, profileId);
+            String json2 = gson.toJson(user);
             return new ResponseEntity<>(json2, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("NPE!", HttpStatus.INTERNAL_SERVER_ERROR);

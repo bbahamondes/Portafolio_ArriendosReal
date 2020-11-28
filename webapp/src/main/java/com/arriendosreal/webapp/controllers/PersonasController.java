@@ -114,7 +114,7 @@ public class PersonasController {
     }
     
     @GetMapping(value = "/all")
-    public ResponseEntity<String> getPersonaByID() {
+    public ResponseEntity<String> getAllPersona() {
         List<Personas> persons = null;
         try {
             persons = findAllPersonas();
@@ -122,7 +122,10 @@ public class PersonasController {
             System.out.println(e.toString());
         }
 
-        if (persons != null) {            
+        if (persons != null) {
+            persons.forEach(person -> {
+                person.setUsers(personaRepo.findByIdPersona(person.getIdPersona()).orElse(null).getUsers());
+            });
             return new ResponseEntity<>(gson.toJson(persons), HttpStatus.OK);
         } else {
             return new ResponseEntity<>("User Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
