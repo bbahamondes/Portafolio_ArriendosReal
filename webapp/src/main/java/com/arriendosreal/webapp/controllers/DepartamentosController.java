@@ -2,8 +2,10 @@ package com.arriendosreal.webapp.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 
 import com.arriendosreal.webapp.entities.Departmentos;
+import com.arriendosreal.webapp.entities.Reservas;
 import com.arriendosreal.webapp.repositories.DepartamentosRepository;
 import java.math.BigDecimal;
 
@@ -65,6 +68,23 @@ public class DepartamentosController {
             return Collections.emptyList();
         } else {
             return (List) out.get("out_departamento");
+        }
+
+    }
+    
+    List<Reservas> findReservasByDepto(int departamentoId) {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_RESERVAS_BY_DEPTO")
+                .returningResultSet("null", BeanPropertyRowMapper.newInstance(Reservas.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_depto_id", departamentoId);
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_reserva");
         }
 
     }
@@ -122,7 +142,13 @@ public class DepartamentosController {
         }
 
         if (deps != null) {
+            deps.forEach( dep -> {
+                List<Reservas> res = findReservasByDepto(dep.getIdDepartmento().intValue());
+                Set<Reservas> res2 = new HashSet<>(res);
+                dep.setReservases(res2);
+            });
             String json = gson.toJson(deps);
+            
             return new ResponseEntity<>(json, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Depto Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -133,11 +159,14 @@ public class DepartamentosController {
     @GetMapping
     public ResponseEntity<String> getDepartamentoByID(@RequestParam(name = "departamentoId", required = true) int departamentoId) {
 
-        Departmentos dep = new Departmentos();
+        Departmentos dep = null;
         List<Departmentos> deps = new ArrayList<Departmentos>();
         try {
             deps = findDeptoById(departamentoId);
             dep = deps.get(0);
+            var res = findReservasByDepto(dep.getIdDepartmento().intValue());
+            Set<Reservas> res2 = new HashSet<>(res);
+            dep.setReservases(res2);
         } catch (Exception e) {
             return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -159,6 +188,9 @@ public class DepartamentosController {
         try {
             deps = findDeptoById(departamentoId);
             dep = deps.get(0);
+            var res = findReservasByDepto(dep.getIdDepartmento().intValue());
+            Set<Reservas> res2 = new HashSet<>(res);
+            dep.setReservases(res2);
         } catch (Exception e) {
             return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -1,0 +1,25 @@
+CREATE OR REPLACE PROCEDURE SP_GET_RESERVAS_BY_DEPTO (
+    in_depto_id IN VARCHAR2,
+    out_reserva OUT SYS_REFCURSOR
+) AS BEGIN
+    OPEN out_reserva FOR
+        SELECT * FROM Reservas r WHERE r.DEPARTMENTOS_ID_DEPARTMENTO = in_depto_id;
+END;
+    
+CREATE OR REPLACE PROCEDURE SP_GET_RESERVAS_BY_PERSONA (
+    in_persona_id IN VARCHAR2,
+    out_reserva OUT SYS_REFCURSOR
+) AS BEGIN
+    OPEN out_reserva FOR
+        SELECT * FROM RESERVAS r WHERE r.PERSONAS_ID_PERSONA = in_persona_id;
+END;
+
+
+-- Depto by id reserva
+CREATE OR REPLACE PROCEDURE SP_GET_DEPTO_BY_RESERVA (
+    in_reserva_id IN VARCHAR2,
+    out_depto OUT SYS_REFCURSOR
+) AS BEGIN
+    OPEN out_reserva FOR        
+        SELECT d.* FROM DEPARTMENTOS d, RESERVAS r WHERE r.DEPARTMENTOS_ID_DEPARTMENTO = d.ID_DEPARTMENTO AND r.ID_RESERVA = in_reserva_id;
+END;
