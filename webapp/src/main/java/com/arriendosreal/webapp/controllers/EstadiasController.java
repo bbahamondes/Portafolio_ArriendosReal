@@ -108,7 +108,7 @@ public class EstadiasController {
         if (resultado > 0) {
             try {
                 Checkout cout = checkoutRepo.findByIdCheckout(BigDecimal.valueOf(checkoutId)).orElse(null);
-                Checkin cin = checkinRepo.findByIdCheckin(BigDecimal.valueOf(checkoutId)).orElse(null);
+                Checkin cin = checkinRepo.findByIdCheckin(BigDecimal.valueOf(checkinId)).orElse(null);
                 cout.setMultases(null);
                 cout.setEstadiases(null);
                 cin.setEstadiases(null);
