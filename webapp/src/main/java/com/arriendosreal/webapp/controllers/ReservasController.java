@@ -1,6 +1,7 @@
 package com.arriendosreal.webapp.controllers;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,6 +81,23 @@ public class ReservasController {
             return Collections.emptyList();
         } else {
             return (List) out.get("out_reserva");
+        }
+
+    }
+    
+    List<Reservas> findReservaByUserId(int userId) {
+        
+        simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_MIS_RESERVAS")
+                .returningResultSet("out_reserva", BeanPropertyRowMapper.newInstance(Reservas.class));
+
+        SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_user_id", userId);
+
+        Map out = simpleJdbcCallRefCursor.execute(paramaters);
+
+        if (out == null) {
+            return Collections.emptyList();
+        } else {
+            return (List) out.get("out_reservas");
         }
 
     }
@@ -173,6 +192,29 @@ public class ReservasController {
         if (res != null) {
             try {
                 res.setAcompananteses(null);
+                String json = gson.toJson(res);
+                return new ResponseEntity<>(json, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            return new ResponseEntity<>("Tipos Servicio Not Found", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @GetMapping(value = "/user/{userId}" )
+    public ResponseEntity<String> getReservaByUserID(@PathVariable(name = "userId", required = true) int userId) {
+        
+        List<Reservas> res = null;
+        try {
+            res = findReservaByUserId(userId);
+        } catch (Exception e) {
+            return new ResponseEntity<>(gson.toJson(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (res != null) {
+            try {
                 String json = gson.toJson(res);
                 return new ResponseEntity<>(json, HttpStatus.OK);
             } catch (Exception e) {

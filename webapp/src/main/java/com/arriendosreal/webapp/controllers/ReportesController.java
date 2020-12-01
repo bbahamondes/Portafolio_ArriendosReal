@@ -63,7 +63,7 @@ public class ReportesController {
     List<Departmentos> reporteDeptos(String fechaD, String fechaH, String zona) {
         
         simpleJdbcCallRefCursor = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_GET_REPORTE_GANANCIAS")
-                .returningResultSet("out_ganancias", BeanPropertyRowMapper.newInstance(Departmentos.class));
+                .returningResultSet("null", BeanPropertyRowMapper.newInstance(Departmentos.class));
 
         SqlParameterSource paramaters = new MapSqlParameterSource().addValue("in_fecha_desde", fechaD)
                 .addValue("in_fecha_hasta", fechaH)
@@ -135,7 +135,7 @@ public class ReportesController {
         }
 
         if (deps != null) {
-            deps.forEach(dep -> {
+            /*deps.forEach(dep -> {
                 List<Reservas> res = findReservasByDepto(dep.getIdDepartmento().intValue());
                 List<Reservas> res3 = new ArrayList<Reservas>();
                 res.forEach(re -> {
@@ -145,7 +145,7 @@ public class ReportesController {
                 });
                 Set<Reservas> res2 = new HashSet<>(res3);
                 dep.setReservases(res2);
-            });
+            });*/
             
             String json = gson.toJson(deps);
             

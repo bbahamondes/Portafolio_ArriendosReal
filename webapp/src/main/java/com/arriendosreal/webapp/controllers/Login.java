@@ -33,7 +33,8 @@ public class Login {
         if (user != null) {
             if (user.getPassword().contentEquals(password.toString())) {
                 String profileName = profileRepo.findByProfileId(user.getProfiles()).orElse(null).getProfileName();
-                String json = String.format("{\"email\": \"%s\", \"profile\": \"%s\"}", user.getEmail(), profileName);
+                String json = String.format("{\"email\": \"%s\", \"profile\": \"%s\", \"userId\":\"%s\", \"username\":\"%s\" }", 
+                        user.getEmail(), profileName, user.getUserId(), user.getUsername());
                 return new ResponseEntity<>(json, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Wrong creds", HttpStatus.UNAUTHORIZED);
